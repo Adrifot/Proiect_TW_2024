@@ -1,0 +1,15 @@
+body {
+    --bg-col: #D6D2D2;
+    --spacing: 300px;
+}
+
+p {
+    color: #EB6424;
+    font-style: italic;
+    background-color: var(--bg-col);
+}
+
+h1 {
+    border: 5px solid blue;
+    margin: var(--spacing);
+}
