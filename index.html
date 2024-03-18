@@ -15,99 +15,150 @@
     <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="msapplication-config" content="sources/images/ico/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="sources/css/main.css">
     <title>Pagina Principala - BG Shop</title>
 </head>
 <body>
     <h1>BG Shop - Magazinul tau de board games</h1>
     <header>
         <nav>
-            <ul>
-                <li> Acasa
+            <label for="drop-menu" id="hamburger-menu">
+                <img src="/sources/images/hamburger_menu.png" alt="dropdown menu icon" width="300px">
+            </label>
+            <input type="checkbox" id="drop-down">
+            <ul class="menu">
+                <li> <div id="home">Acasa</div><div id="home-medium"></div>
                     <ul>
                         <li><a href="#welcome">Bun venit</a></li>
-                        <li>
-                            <a href="#promotii">Promotii</a>
-                            <ul>
-                                <li><a href="#noua">Promotie noua</a></li>
-                                <li><a href="#pachet">Oferta pachet</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#promotions">Promotii</a></li>
                         <li><a href="#reviews">Recenzii si Review-uri</a></li>
                         <li><a href="#qa">Q&A</a></li>
+                        <li><a href="#dayprod">Produsul Zilei</a></li>
+                        <li><a href="#newprods">Produse Noi</a></li>
+                        <li><a href="#news">Stiri</a></li>
+                        <li><a href="#schedule">Orar</a></li>
                     </ul>
                 </li>
-                <li><a href="altapagina.html">Alta pagina</a></li>
+                <li><a href="">Despre Noi</a></li>
+                <li><a href="">Jocuri de Societate</a></li>
+                <li><a href="">Figurine</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Inregistrare</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <section id="welcome">
-            <h2>Bine ati venit!</h2>
-            <p>
-                Bine ați venit pe site-ul <b>BG Shop</b>, destinația perfectă pentru pasionații de <b>jocuri de societate</b>! Aici vă așteaptă o experiență captivantă în lumea divertismentului interactiv! Indiferent dacă sunteți un veteran experimentat sau un începător curios, 
-                BG Shop vă oferă o gamă largă de jocuri de societate, de la clasicele preferate până la cele mai noi lansări. Vă invităm să explorați universul fascinant al jocurilor de societate și să vă bucurați de momente memorabile alături de prieteni și familie!
-            </p>
-        </section>
-        <section id="promotii">
-            <h2>Promotii</h2>
-            <section id="noua">
-                <h3>Oferta Noua</h3>
+        <div id="page-grid">
+            <section id="welcome">
+                <h2>Bine ati venit!</h2>
                 <p>
-                    Descoperă oferta nouă de jocuri de societate la BG Shop, cu titluri fascinante ce te vor captiva instantaneu! 
-                    Fie că îți dorești să încerci cele mai recente inovații sau să redescoperi clasicele preferate, BG Shop are ceva pentru fiecare jucător.
+                    Bine ați venit pe site-ul <b>BG Shop</b>, destinația perfectă pentru pasionații de <b>jocuri de societate</b>! Aici vă așteaptă o experiență captivantă în lumea divertismentului interactiv! Indiferent dacă sunteți un veteran experimentat sau un începător curios, 
+                    BG Shop vă oferă o gamă largă de jocuri de societate, de la clasicele preferate până la cele mai noi lansări. Vă invităm să explorați universul fascinant al jocurilor de societate și să vă bucurați de momente memorabile alături de prieteni și familie!
                 </p>
             </section>
-            <section id="pachet">
-                <h3>Oferta Pachet</h3>
-                <p>
-                    Profită de oferta pachet și obține <b>Set-ul incepatorului</b> la doar <s>650</s> <ins>350</ins> de lei! Indiferent dacă ești în căutarea unei aventuri epice
-                    sau a unor momente de relaxare alături de cei dragi!
-                </p>
-                <p>Set-ul incepatorului contine majoritatea jocurilor de societate clasice - precum <i>Monopoly</i> sau <i>Dungeons and Dragons</i>, dar si jocuri de la <a href="https://gamewright.com/" target="_blank">Gamewright</a> si <a href="https://www.daysofwonder.com/" target="_blank">Days of Wonder</a>. </p>
+            <section id="dayprod">
+                <h3>Produsul Zilei</h3>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa soluta perspiciatis quas vitae provident. Tempore officia repudiandae labore, illum rem culpa est quibusdam commodi hic dicta optio pariatur sint ad!</p>
             </section>
-        </section>
-        <section id="reviews">
-            <h2>Recenzii si Review-uri</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi hic rerum eos beatae obcaecati ad! Repudiandae deserunt, eius magni, aliquam sapiente consequatur iusto ducimus assumenda sint adipisci beatae esse!
-            Adipisci ullam ipsam itaque, cumque officiis soluta atque praesentium voluptatem harum qui. Ea corporis iure incidunt sed voluptatibus quos inventore aut culpa excepturi ipsam earum odio, obcaecati ex in ut?
-            Est maxime praesentium iste, odit commodi corrupti nam quisquam odio iusto blanditiis quo, ex, quia architecto! Quibusdam architecto ab, magnam cumque fuga aliquam voluptas fugit quas minus nostrum obcaecati ratione.
-            Perspiciatis expedita nihil amet. Ad officia ducimus quisquam vel aliquid. Corrupti natus vero sequi, eius ea quisquam cum animi aliquam aspernatur perferendis, laudantium, sapiente reprehenderit incidunt accusamus earum labore quibusdam.</p>
-            <figure>
-                <picture>
-                    <source srcset="sources/images/boardgame1-mobile.jpg" media="(max-width: 500px)">
-                    <source srcset="sources/images/boardgame1-tablet.jpg" media="(max-width: 1000px)">
-                    <img src="sources/images/boardgame1.jpg" alt="board game" title="joc de societate" width="50%">
-                </picture>
-                <figcaption>Un board game misto</figcaption>
-            </figure>
-            <a href="sources/images/boardgame1" download>Descarcati imaginea</a>
-            <div class="iframe-tabs">
-                <a href="https://www.youtube.com/embed/C8EZ4i53xu0?si=tCyuOJNz1Whip2c_" target="ifr-video">Inis</a>
-                <a href="https://www.youtube.com/embed/pxhJV3cF_30?si=4s5bn6hIiacn4dys" target="ifr-video">Scythe</a>
-                <a href="https://www.youtube.com/embed/d5bZwwrIwLE?si=W3afTWtzyU9XfstP" target="ifr-video">Root</a>
-            </div>
-            <iframe width="560" height="315" name="ifr-video" src="https://www.youtube.com/embed/d5bZwwrIwLE?si=W3afTWtzyU9XfstP" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-        </section>
-        <section id="qa">
-            <h2>Intrebari si raspunsuri</h2>
-            <details>
-                <summary>Faceti livrare la domiciliu?</summary>
-                <p>DA!</p>
-            </details>
-            <details>
-                <summary>Jocurile sunt scumpe?</summary>
-                <p>NU! :D</p>
-            </details>
-            <details>
-                <summary>Cum va contactam?</summary>
-                <ul>
-                    <li><a href="mailto:contact@bgshop.ro">Contactati-ne prin mail</a></li>
-                    <li><a href="tel:+0123456789">Sunati-ne</a></li>
-                    <li><a href="https://api.whatsapp.com/send?phone=+0123456789">Contact prin Whatsapp</a></li>
-                </ul>
-            </details>
-        </section>
-        <hr>
+            <section id="newprods">
+                <h3>Produse Noi</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam in, iure aliquid sed omnis perspiciatis neque ad quidem doloribus accusamus repudiandae quibusdam incidunt accusantium praesentium, aspernatur excepturi laboriosam id a!
+                Nemo repudiandae, voluptatum assumenda soluta excepturi ratione iusto minus illum tenetur voluptate ab rerum in maxime earum asperiores exercitationem doloribus quibusdam minima aperiam aliquam nisi sint expedita, repellendus illo! Itaque.
+                Odio quidem voluptate maiores ducimus. Dolorem dolore voluptates, dolor sapiente fugiat, quod ut veniam ab esse commodi voluptatem recusandae perferendis provident corrupti rem ipsam ipsa porro dolorum, nobis quidem odio.
+                Rerum amet asperiores similique omnis velit eos, molestias voluptates blanditiis eaque magnam a! Dicta aliquid sit vero animi, rem nihil neque laboriosam veniam doloribus unde doloremque adipisci amet sequi praesentium.</p>
+            </section>
+            <section id="schedule">
+                <h3>Orarul Nostru</h3>
+                <table id="scheduletable">
+                    <thead>
+                        <tr>
+                            <th>Ziua</th>
+                            <th>Orele de lucru</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Luni</td>
+                            <td>8-20</td>
+                        </tr>
+                        <tr>
+                            <td>Marti</td>
+                            <td>8-20</td>
+                        </tr>
+                        <tr>
+                            <td>Miercuri</td>
+                            <td>8-20</td>
+                        </tr>
+                        <tr>
+                            <td>Joi</td>
+                            <td>8-20</td>
+                        </tr>
+                        <tr>
+                            <td>Vineri</td>
+                            <td>9-18</td>
+                        </tr>
+                        <tr>
+                            <td>Sambata</td>
+                            <td>10-16</td>
+                        </tr>
+                        <tr>
+                            <td>Duminica</td>
+                            <td>LIBER</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <section id="news">
+                <h3>Stiri si Anunturi</h3>
+                <article>
+                    <h4 class="newstitle">Nou Magazin</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam esse eos excepturi! Itaque vitae mollitia nemo et ut aliquid alias voluptatibus nihil atque culpa, veritatis nobis minima voluptatem in dolore.
+                    Debitis exercitationem quae repellat ipsa eum necessitatibus! Culpa, enim neque? Quod odio ipsam est voluptatibus ab? Ducimus modi rerum deleniti numquam animi aperiam odio ut ad nisi, facere, voluptate ab?</p>
+                </article>
+                <article>
+                    <h4 class="newstitle">Acum avem produse de la Hasbro</h4>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi iste voluptas ratione assumenda eos. Dicta ipsa tempora distinctio dignissimos? Quam animi eaque velit quae obcaecati nisi iure explicabo nobis veritatis?
+                    Vero pariatur minus atque repellat adipisci vel dolores aliquam libero error. Unde minima alias porro cumque quis? Doloremque aperiam illo molestias nisi vero debitis inventore sequi eligendi. Eos, soluta dolorem.
+                    Magnam iure tempora facere cum voluptatibus. Nobis consequuntur, nam at explicabo necessitatibus voluptatum quisquam atque veritatis esse quae officiis ut. Magnam earum neque molestiae aut voluptates enim, tempora praesentium placeat.</p>
+                </article>
+            </section>
+            <section id="promotions">
+                <h3>Promotii</h3>
+                <section>
+                    <h4>Promotie noua</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias minus architecto fugit enim tempore repellendus earum, vitae sapiente! Necessitatibus quod incidunt nesciunt reiciendis vel in labore ad amet, sequi porro.
+                    Natus sed quisquam voluptas nisi dolor aspernatur ipsum distinctio suscipit consectetur unde magni explicabo beatae accusantium deserunt asperiores quaerat, perferendis repellat praesentium consequatur exercitationem pariatur? Maiores ut dolor asperiores placeat?</p>
+                </section>
+                <section>
+                    <h4>Promotie pachet</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt sed nesciunt autem maxime enim quos tempora facere, doloribus minima laudantium ullam iusto distinctio quae dolorem, impedit illo soluta, laboriosam ut?
+                    Ipsa, omnis voluptates laboriosam minima impedit incidunt quos asperiores temporibus ex at odio esse dignissimos consequatur, in reiciendis officia harum iste sint eligendi distinctio debitis earum labore fuga. Commodi, consequuntur.</p>
+                </section>
+            </section>
+            <section id="qa">
+                <h3>Intrebari si Raspunsuri</h3>
+                <details>
+                    <summary>Faceti livrare la domiciliu?</summary>
+                    <p>DA!</p>
+                </details>
+                <details>
+                    <summary>Jocurile sunt scumpe?</summary>
+                    <p>NU! :D</p>
+                </details>
+                <details>
+                    <summary>Cum va contactam?</summary>
+                    <ul>
+                        <li><a href="mailto:contact@bgshop.ro">Contactati-ne prin mail</a></li>
+                        <li><a href="tel:+0123456789">Sunati-ne</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=+0123456789">Contact prin Whatsapp</a></li>
+                    </ul>
+                </details>
+            </section>
+            <section id="reviews">
+                <h3>Pareri si Recenzii</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro fuga repellendus fugit iure aliquam consequuntur, maiores ipsum, consectetur, quam rem laborum eveniet. Sequi consequatur praesentium nemo. Sunt reprehenderit hic distinctio.</p>
+            </section>
+        </div>
     </main>
     <footer>
         <a href="#">Mergi sus</a>
@@ -116,3 +167,67 @@
     </footer>
 </body>
 </html>
+
+
+<!--
+    <section id="promotii">
+                <h2>Promotii</h2>
+                <section id="noua">
+                    <h3>Oferta Noua</h3>
+                    <p>
+                        Descoperă oferta nouă de jocuri de societate la BG Shop, cu titluri fascinante ce te vor captiva instantaneu! 
+                        Fie că îți dorești să încerci cele mai recente inovații sau să redescoperi clasicele preferate, BG Shop are ceva pentru fiecare jucător.
+                    </p>
+                </section>
+                <section id="pachet">
+                    <h3>Oferta Pachet</h3>
+                    <p>
+                        Profită de oferta pachet și obține <b>Set-ul incepatorului</b> la doar <s>650</s> <ins>350</ins> de lei! Indiferent dacă ești în căutarea unei aventuri epice
+                        sau a unor momente de relaxare alături de cei dragi!
+                    </p>
+                    <p>Set-ul incepatorului contine majoritatea jocurilor de societate clasice - precum <i>Monopoly</i> sau <i>Dungeons and Dragons</i>, dar si jocuri de la <a href="https://gamewright.com/" target="_blank">Gamewright</a> si <a href="https://www.daysofwonder.com/" target="_blank">Days of Wonder</a>. </p>
+                </section>
+            </section>
+            <section id="reviews">
+                <h2>Recenzii si Review-uri</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque excepturi hic rerum eos beatae obcaecati ad! Repudiandae deserunt, eius magni, aliquam sapiente consequatur iusto ducimus assumenda sint adipisci beatae esse!
+                Adipisci ullam ipsam itaque, cumque officiis soluta atque praesentium voluptatem harum qui. Ea corporis iure incidunt sed voluptatibus quos inventore aut culpa excepturi ipsam earum odio, obcaecati ex in ut?
+                Est maxime praesentium iste, odit commodi corrupti nam quisquam odio iusto blanditiis quo, ex, quia architecto! Quibusdam architecto ab, magnam cumque fuga aliquam voluptas fugit quas minus nostrum obcaecati ratione.
+                Perspiciatis expedita nihil amet. Ad officia ducimus quisquam vel aliquid. Corrupti natus vero sequi, eius ea quisquam cum animi aliquam aspernatur perferendis, laudantium, sapiente reprehenderit incidunt accusamus earum labore quibusdam.</p>
+                <figure>
+                    <picture>
+                        <source srcset="sources/images/boardgame1-mobile.jpg" media="(max-width: 500px)">
+                        <source srcset="sources/images/boardgame1-tablet.jpg" media="(max-width: 1000px)">
+                        <img src="sources/images/boardgame1.jpg" alt="board game" title="joc de societate" width="50%">
+                    </picture>
+                    <figcaption>Un board game misto</figcaption>
+                </figure>
+                <a href="sources/images/boardgame1" download>Descarcati imaginea</a>
+                <div class="iframe-tabs">
+                    <a href="https://www.youtube.com/embed/C8EZ4i53xu0?si=tCyuOJNz1Whip2c_" target="ifr-video">Inis</a>
+                    <a href="https://www.youtube.com/embed/pxhJV3cF_30?si=4s5bn6hIiacn4dys" target="ifr-video">Scythe</a>
+                    <a href="https://www.youtube.com/embed/d5bZwwrIwLE?si=W3afTWtzyU9XfstP" target="ifr-video">Root</a>
+                </div>
+                <iframe width="560" height="315" name="ifr-video" src="https://www.youtube.com/embed/d5bZwwrIwLE?si=W3afTWtzyU9XfstP" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </section>
+            <section id="qa">
+                <h2>Intrebari si raspunsuri</h2>
+                <details>
+                    <summary>Faceti livrare la domiciliu?</summary>
+                    <p>DA!</p>
+                </details>
+                <details>
+                    <summary>Jocurile sunt scumpe?</summary>
+                    <p>NU! :D</p>
+                </details>
+                <details>
+                    <summary>Cum va contactam?</summary>
+                    <ul>
+                        <li><a href="mailto:contact@bgshop.ro">Contactati-ne prin mail</a></li>
+                        <li><a href="tel:+0123456789">Sunati-ne</a></li>
+                        <li><a href="https://api.whatsapp.com/send?phone=+0123456789">Contact prin Whatsapp</a></li>
+                    </ul>
+                </details>
+            </section>
+            <hr>
+-->
