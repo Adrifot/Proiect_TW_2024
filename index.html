@@ -15,12 +15,14 @@
     <meta name="msapplication-TileColor" content="#ffc40d">
     <meta name="msapplication-config" content="sources/images/ico/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="sources/css/general.css">
     <link rel="stylesheet" href="sources/css/main.css">
+    <link rel="stylesheet" href="sources/css/grid_layout.css">
     <title>Pagina Principala - BG Shop</title>
 </head>
 <body>
-    <h1>BG Shop - Magazinul tau de board games</h1>
     <header>
+        <h1>BG Shop - Magazinul tau de board games</h1>
         <nav>
             <label for="drop-menu" id="hamburger-menu">
                 <img src="/sources/images/hamburger_menu.png" alt="dropdown menu icon" width="300px">
@@ -55,71 +57,102 @@
                     Bine ați venit pe site-ul <b>BG Shop</b>, destinația perfectă pentru pasionații de <b>jocuri de societate</b>! Aici vă așteaptă o experiență captivantă în lumea divertismentului interactiv! Indiferent dacă sunteți un veteran experimentat sau un începător curios, 
                     BG Shop vă oferă o gamă largă de jocuri de societate, de la clasicele preferate până la cele mai noi lansări. Vă invităm să explorați universul fascinant al jocurilor de societate și să vă bucurați de momente memorabile alături de prieteni și familie!
                 </p>
+                <figure>
+                    <div>
+                        <picture>
+                            <source srcset="sources/images/boardgame1-mobile.jpg" media="(max-width: 500px)">
+                            <source srcset="sources/images/boardgame1-tablet.jpg" media="(max-width: 1000px)">
+                            <img src="sources/images/boardgame1.jpg" alt="board game" title="joc de societate" width="50%">
+                        </picture>
+                        <figcaption>Un board game misto</figcaption>
+                    </div>
+                </figure>
+                <a href="sources/images/boardgame1.jpg" download>Descarcati imaginea</a>
             </section>
             <section id="dayprod">
                 <h3>Produsul Zilei</h3>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa soluta perspiciatis quas vitae provident. Tempore officia repudiandae labore, illum rem culpa est quibusdam commodi hic dicta optio pariatur sint ad!</p>
+                <p>
+                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa soluta perspiciatis quas vitae provident. Tempore officia repudiandae labore, illum rem culpa est quibusdam commodi hic dicta optio pariatur sint ad!
+                </p>
             </section>
             <section id="newprods">
                 <h3>Produse Noi</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam in, iure aliquid sed omnis perspiciatis neque ad quidem doloribus accusamus repudiandae quibusdam incidunt accusantium praesentium, aspernatur excepturi laboriosam id a!
-                Nemo repudiandae, voluptatum assumenda soluta excepturi ratione iusto minus illum tenetur voluptate ab rerum in maxime earum asperiores exercitationem doloribus quibusdam minima aperiam aliquam nisi sint expedita, repellendus illo! Itaque.
-                Odio quidem voluptate maiores ducimus. Dolorem dolore voluptates, dolor sapiente fugiat, quod ut veniam ab esse commodi voluptatem recusandae perferendis provident corrupti rem ipsam ipsa porro dolorum, nobis quidem odio.
-                Rerum amet asperiores similique omnis velit eos, molestias voluptates blanditiis eaque magnam a! Dicta aliquid sit vero animi, rem nihil neque laboriosam veniam doloribus unde doloremque adipisci amet sequi praesentium.</p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, amet officiis velit quos quae neque iste itaque esse iure ipsum excepturi deserunt perspiciatis impedit dicta iusto! Temporibus dolore ea pariatur.
+                    Quia ex quod voluptas architecto ipsam quaerat ut omnis, ea illo et beatae fugit cum est aut deserunt error commodi perspiciatis in nisi provident tempora a facilis sit quas! Deleniti!
+                </p>
             </section>
             <section id="schedule">
                 <h3>Orarul Nostru</h3>
                 <table id="scheduletable">
+                    
                     <thead>
                         <tr>
+                            <th>Perioada Saptamanii</th>
                             <th>Ziua</th>
-                            <th>Orele de lucru</th>
+                            <th>Program normal</th>
+                            <th>Program de sarbatori</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr class="tab-no-bg">
+                            <td rowspan="5" class="tab-no-bg">Zile lucratoare</td>
                             <td>Luni</td>
                             <td>8-20</td>
+                            <td>10-18</td>
                         </tr>
                         <tr>
                             <td>Marti</td>
                             <td>8-20</td>
+                            <td>10-16</td>
                         </tr>
                         <tr>
                             <td>Miercuri</td>
                             <td>8-20</td>
+                            <td>10-16</td>
                         </tr>
                         <tr>
                             <td>Joi</td>
                             <td>8-20</td>
+                            <td>10-16</td>
                         </tr>
                         <tr>
                             <td>Vineri</td>
                             <td>9-18</td>
+                            <td>INCHIS</td>
                         </tr>
-                        <tr>
+                        <tr class="tab-no-bg">
+                            <td rowspan="2" class="tab-no-bg">Weekend</td>
                             <td>Sambata</td>
                             <td>10-16</td>
+                            <td>INCHIS</td>
                         </tr>
                         <tr>
                             <td>Duminica</td>
-                            <td>LIBER</td>
+                            <td>INCHIS</td>
+                            <td>INCHIS</td>
                         </tr>
                     </tbody>
+                    <tfoot>
+                        <tr class="tab-no-bg"><td colspan="100%" class="mention tab-no-bg">Pot aparea posibile modificari ale orarului in timpul sarbatorilor mari</td></tr>
+                    </tfoot>
+                    <caption>Program de lucru</caption>
                 </table>
             </section>
             <section id="news">
                 <h3>Stiri si Anunturi</h3>
                 <article>
                     <h4 class="newstitle">Nou Magazin</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam esse eos excepturi! Itaque vitae mollitia nemo et ut aliquid alias voluptatibus nihil atque culpa, veritatis nobis minima voluptatem in dolore.
-                    Debitis exercitationem quae repellat ipsa eum necessitatibus! Culpa, enim neque? Quod odio ipsam est voluptatibus ab? Ducimus modi rerum deleniti numquam animi aperiam odio ut ad nisi, facere, voluptate ab?</p>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. A, asperiores. Dolor ipsam facere dicta modi vero nulla et nemo veritatis sit ipsum? Ab reiciendis ipsum eos quasi rem ex totam!
+                    </p>
                 </article>
                 <article>
                     <h4 class="newstitle">Acum avem produse de la Hasbro</h4>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi iste voluptas ratione assumenda eos. Dicta ipsa tempora distinctio dignissimos? Quam animi eaque velit quae obcaecati nisi iure explicabo nobis veritatis?
-                    Vero pariatur minus atque repellat adipisci vel dolores aliquam libero error. Unde minima alias porro cumque quis? Doloremque aperiam illo molestias nisi vero debitis inventore sequi eligendi. Eos, soluta dolorem.
-                    Magnam iure tempora facere cum voluptatibus. Nobis consequuntur, nam at explicabo necessitatibus voluptatum quisquam atque veritatis esse quae officiis ut. Magnam earum neque molestiae aut voluptates enim, tempora praesentium placeat.</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex ipsum et perspiciatis delectus nihil non itaque cupiditate quam molestias impedit soluta eaque quis, magnam voluptate fuga hic facere. Optio, temporibus.
+                        Ab dicta voluptatem non ducimus at, mollitia incidunt. Neque fugit maxime sapiente quis eum magnam totam voluptas ducimus. Tempore corporis iure corrupti ut voluptate laudantium rerum placeat quisquam ratione voluptas?
+                    </p>
                 </article>
             </section>
             <section id="promotions">
@@ -134,6 +167,16 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt sed nesciunt autem maxime enim quos tempora facere, doloribus minima laudantium ullam iusto distinctio quae dolorem, impedit illo soluta, laboriosam ut?
                     Ipsa, omnis voluptates laboriosam minima impedit incidunt quos asperiores temporibus ex at odio esse dignissimos consequatur, in reiciendis officia harum iste sint eligendi distinctio debitis earum labore fuga. Commodi, consequuntur.</p>
                 </section>
+                <div class="iframe-container">
+                    <div class="iframe-tabs">
+                        <a href="https://www.youtube.com/embed/C8EZ4i53xu0?si=tCyuOJNz1Whip2c_" target="ifr-video">Inis</a>
+                        <a href="https://www.youtube.com/embed/pxhJV3cF_30?si=4s5bn6hIiacn4dys" target="ifr-video">Scythe</a>
+                        <a href="https://www.youtube.com/embed/d5bZwwrIwLE?si=W3afTWtzyU9XfstP" target="ifr-video">Root</a>
+                    </div>
+                    <iframe width="560" height="315" name="ifr-video" src="https://www.youtube.com/embed/d5bZwwrIwLE?si=W3afTWtzyU9XfstP" 
+                    title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    allowfullscreen></iframe>
+                </div>
             </section>
             <section id="qa">
                 <h3>Intrebari si Raspunsuri</h3>
@@ -156,12 +199,26 @@
             </section>
             <section id="reviews">
                 <h3>Pareri si Recenzii</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro fuga repellendus fugit iure aliquam consequuntur, maiores ipsum, consectetur, quam rem laborum eveniet. Sequi consequatur praesentium nemo. Sunt reprehenderit hic distinctio.</p>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, odio labore! Repellendus fugit alias fugiat numquam, quasi veritatis, eaque in, dicta ratione fuga magni optio? Commodi eveniet ipsum ad expedita.
+                    Perferendis dolore explicabo tenetur consequuntur architecto earum soluta deleniti ullam laudantium odio repellendus qui, sequi repellat rerum optio, praesentium ipsum consectetur deserunt quo perspiciatis sunt! Sequi et placeat totam corrupti.
+                    Laborum officiis sequi recusandae at autem quas minus praesentium natus aspernatur voluptatem doloribus quidem sint, dolorem corrupti? Iusto, vel fuga ullam, eligendi, laborum impedit repudiandae labore esse commodi nulla error.
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam deserunt tempore asperiores hic quae molestias excepturi laboriosam, eum eveniet provident ducimus doloribus est consectetur nisi. Consequuntur at asperiores fuga obcaecati.
+                    Quae nulla libero nisi nesciunt? Ratione, accusantium odio! Velit fugit fuga optio voluptatum eligendi saepe quam ipsa debitis, sed deleniti praesentium soluta voluptates animi ea incidunt tempore, ex voluptas non!
+                    Laborum error eos fugit saepe animi sit. Delectus magni reiciendis cum quis corporis, optio, fugit ad odio sed porro impedit incidunt corrupti, repellat perspiciatis suscipit vitae assumenda nam vero ratione.
+                    Eos saepe facilis labore eaque, beatae sed nihil assumenda dolor, rerum iste hic facere odio accusamus reprehenderit expedita! Nisi vero sed sint repellendus temporibus voluptas ipsum commodi possimus explicabo voluptates.
+                </p>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat impedit ab inventore placeat enim dolorem voluptate quo repellendus eligendi praesentium, consequuntur est reprehenderit, pariatur, quidem neque laboriosam. Blanditiis, similique excepturi.
+                    Suscipit quam odit deleniti ducimus impedit eveniet consectetur hic amet facere fugit et dicta soluta dolor tenetur eius explicabo voluptatibus, excepturi recusandae ut! Sit eligendi nam aliquid est enim necessitatibus.
+                </p>
             </section>
         </div>
     </main>
     <footer>
-        <a href="#">Mergi sus</a>
+        <a href="#" id="link-top"><div id="btt-arrow" title="back to top">&#8593;</div></a>
         <address> <a href="https://maps.app.goo.gl/4p3NG3d36oU65nZN8" target="_blank">Str. Jocurilor #12, Bucuresti, Sector 6</a></address>
         <small>Toate drepturile rezervate &copy; <time datetime="2024-03-04">4 Martie 2024</time> </small>
     </footer>
@@ -194,15 +251,7 @@
                 Adipisci ullam ipsam itaque, cumque officiis soluta atque praesentium voluptatem harum qui. Ea corporis iure incidunt sed voluptatibus quos inventore aut culpa excepturi ipsam earum odio, obcaecati ex in ut?
                 Est maxime praesentium iste, odit commodi corrupti nam quisquam odio iusto blanditiis quo, ex, quia architecto! Quibusdam architecto ab, magnam cumque fuga aliquam voluptas fugit quas minus nostrum obcaecati ratione.
                 Perspiciatis expedita nihil amet. Ad officia ducimus quisquam vel aliquid. Corrupti natus vero sequi, eius ea quisquam cum animi aliquam aspernatur perferendis, laudantium, sapiente reprehenderit incidunt accusamus earum labore quibusdam.</p>
-                <figure>
-                    <picture>
-                        <source srcset="sources/images/boardgame1-mobile.jpg" media="(max-width: 500px)">
-                        <source srcset="sources/images/boardgame1-tablet.jpg" media="(max-width: 1000px)">
-                        <img src="sources/images/boardgame1.jpg" alt="board game" title="joc de societate" width="50%">
-                    </picture>
-                    <figcaption>Un board game misto</figcaption>
-                </figure>
-                <a href="sources/images/boardgame1" download>Descarcati imaginea</a>
+                
                 <div class="iframe-tabs">
                     <a href="https://www.youtube.com/embed/C8EZ4i53xu0?si=tCyuOJNz1Whip2c_" target="ifr-video">Inis</a>
                     <a href="https://www.youtube.com/embed/pxhJV3cF_30?si=4s5bn6hIiacn4dys" target="ifr-video">Scythe</a>

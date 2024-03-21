@@ -1,0 +1,150 @@
+html {
+    font-size: 17px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+h4 {
+    font-size: 1.1rem;
+}
+
+#page-grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    gap: 1rem;
+    grid-template-areas: "welcome welcome welcome"
+                        "dayprod schedule newprods"
+                        "news schedule newprods"
+                        "news promotions qa"
+                        "reviews reviews reviews";
+    overflow:unset;
+}
+
+#page-grid>* {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--complementcolor2);
+}
+
+#welcome {
+    grid-area: welcome;
+}
+
+#dayprod{
+    grid-area: dayprod;
+}
+
+#newprods {
+    grid-area: newprods;
+}
+
+#schedule {
+    grid-area: schedule;
+}
+
+#news {
+    grid-area: news;
+}
+
+#promotions {
+    grid-area: promotions;
+}
+
+#qa {
+    grid-area: qa;
+}
+
+#reviews {
+    grid-area: reviews;
+}
+
+table th, table td, table caption {
+    border: 3px solid var(--complementcolor2);
+    color: var(--txtcolor);
+    padding: 0.5rem 1rem;
+}
+
+table caption {
+    font-weight: bold;
+    caption-side: bottom;
+    border: none;
+}
+
+table {
+    border-spacing: 3px;
+}
+
+.mention {
+    font-size: 0.7rem;
+    text-align: center;;
+}
+
+table tbody tr {
+    transition: all 1s linear;
+}
+
+table tbody tr:nth-of-type(2n+1) {
+    background-color: var(--complementcolor2dark);
+}
+
+table tbody tr:nth-of-type(2n+1):hover {
+    background-color: var(--complementcolor2);
+}
+
+table tbody tr:nth-of-type(2n):hover {
+    background-color: var(--bgcolorlight);
+}
+
+@media screen and (max-width: 1280px) { /* tablets */
+
+    html {
+        font-size: 15px;
+    }
+
+    #page-grid {
+        grid-template-columns: 1fr 2fr;
+        grid-template-areas: "welcome welcome"
+                            "dayprod newprods"
+                            "news promotions"
+                            "news promotions"
+                            "schedule schedule"
+                            "qa reviews";
+    }
+
+    main, header, footer {
+        padding: 0 3%;
+    }
+
+    #news {
+        overflow: auto;
+    }
+
+    table {
+        border-spacing: 1px;
+    }
+}
+
+@media screen and (max-width: 820px) { /* mobile */
+    html {
+        font-size: 13px;
+    }
+    #page-grid {
+        display: block;
+    }
+    main, header, footer {
+        padding: 0 1%;
+    }
+    .iframe-tabs a {
+        transition: none;
+    }
+    table {
+        border-spacing: 0;
+        border-collapse: collapse;
+    }
+    tr {
+        transition: none;
+    }
+    #schedule {
+        overflow-x: scroll;
+    }
+}

@@ -1,40 +1,9 @@
-:root {
-    --txtcolor: #FFFCFF;
-    --bgcolor: #1B2F33;
-    --complementcolor: #FFD23F;
-    --highlightcolor: #F02D3A;
-    --effectcolor: #729EA1;
-}
-
-body {
-    background-color: var(--bgcolor);
-}
-
-p, li, figcaption, details, footer {
-    color: var(--txtcolor);
-}
-
-h1, h2, h3, h4 {
-    color: var(--complementcolor);
-}
-
 .newstitle {
-    color: var(--effectcolor)
+    color: var(--complementcolor2)
 }
 
-a {
-    color: var(--highlightcolor);
-}
-
-th {
-    font-weight: 900;
-}
-
-th, td {
-    color: var(--txtcolor);
-    border: 1px solid var(--effectcolor);
-}
-
-table {
-     border: 3px solid var(--effectcolor);
+figure {
+    display: inline-block;
+    text-align: center; 
+    margin: 0 auto; 
 }
