@@ -3,4 +3,6 @@
 
 **Etapa 1** - finalizata si prezentata pe 04/03/2024.
 
-**Etapa 2** - *Work in progress...*
+**Etapa 2** - finalizata pe 21/03/2024.
+
+**Etapa 3** - work in progress...
