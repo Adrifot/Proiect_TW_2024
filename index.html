@@ -24,7 +24,7 @@
     <header>
         <h1>BG Shop - Magazinul tau de board games</h1>
         <nav>
-            <label for="drop-menu" id="hamburger-menu">
+            <label for="drop-down" id="hamburger-menu">
                 <img src="/sources/images/hamburger_menu.png" alt="dropdown menu icon">
             </label>
             <input type="checkbox" id="drop-down">
@@ -58,16 +58,16 @@
                     BG Shop vă oferă o gamă largă de jocuri de societate, de la clasicele preferate până la cele mai noi lansări. Vă invităm să explorați universul fascinant al jocurilor de societate și să vă bucurați de momente memorabile alături de prieteni și familie!
                 </p>
                 <figure>
-                    <div>
-                        <picture>
-                            <source srcset="sources/images/boardgame1-mobile.jpg" media="(max-width: 500px)">
-                            <source srcset="sources/images/boardgame1-tablet.jpg" media="(max-width: 1000px)">
-                            <img src="sources/images/boardgame1.jpg" alt="board game" title="joc de societate">
-                        </picture>
-                        <figcaption>Un board game misto</figcaption>
-                    </div>
+                    <picture>
+                        <source srcset="sources/images/boardgame1-mobile.jpg" media="(max-width: 500px)">
+                        <source srcset="sources/images/boardgame1-tablet.jpg" media="(max-width: 1000px)">
+                        <img src="sources/images/boardgame1.jpg" alt="board game" title="joc de societate">
+                    </picture>
+                    <figcaption>Un board game misto</figcaption>
                 </figure>
-                <a href="sources/images/boardgame1.jpg" download>Descarcati imaginea</a>
+                <div>
+                    <a href="sources/images/boardgame1.jpg" download>Descarcati imaginea</a>
+                </div>
             </section>
             <section id="dayprod">
                 <h3>Produsul Zilei</h3>
@@ -85,7 +85,7 @@
             <section id="schedule">
                 <h3>Orarul Nostru</h3>
                 <table id="scheduletable">
-                    
+                    <caption>Program de lucru</caption>
                     <thead>
                         <tr>
                             <th>Perioada Saptamanii</th>
@@ -134,9 +134,8 @@
                         </tr>
                     </tbody>
                     <tfoot>
-                        <tr class="tab-no-bg"><td colspan="100%" class="mention tab-no-bg">Pot aparea posibile modificari ale orarului in timpul sarbatorilor mari</td></tr>
+                        <tr class="tab-no-bg"><td colspan="4" class="mention tab-no-bg">Pot aparea posibile modificari ale orarului in timpul sarbatorilor mari</td></tr>
                     </tfoot>
-                    <caption>Program de lucru</caption>
                 </table>
             </section>
             <section id="news">

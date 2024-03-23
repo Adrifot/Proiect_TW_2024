@@ -50,6 +50,10 @@ header, footer {
     padding: 0 var(--spacing) var(--txtpadding) var(--spacing);
 }
 
+header nav li, footer * {
+    color: var(--bgcolor);
+}
+
 header {
     margin-bottom: var(--spacingsmall);
 }
@@ -58,6 +62,7 @@ footer {
     margin-top: var(--spacingsmall);
     padding-top: var(--txtpaddingsmall);
     padding-bottom: var(--txtpaddingsmall);
+    
 }
 
 h1, header a {
@@ -85,7 +90,7 @@ a {
 
 img {
     min-width: 100px;
-    width: 75%;
+    width: 60%;
     max-width: 1000px;
 }
 
