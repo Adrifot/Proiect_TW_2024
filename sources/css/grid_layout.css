@@ -164,4 +164,7 @@ table tbody tr:nth-of-type(2n):hover {
     img {
         min-width: 250px;
     }
+    #linktop, #arrow {
+        transition: none;
+    }
 }

@@ -112,7 +112,7 @@ img {
     background: linear-gradient(45deg, var(--bgcolorlight), var(--complementcolor2), var(--bgcolorlight));
 }
 
-#linktop #arrow {
+#arrow {
     color: var(--txtcolor);
     text-decoration: none;
     margin: auto;
