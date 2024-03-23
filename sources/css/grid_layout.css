@@ -4,9 +4,14 @@ html {
     font-style: normal;
 }
 
+h3 {
+    font-size: 1.3rem;
+}
+
 h4 {
     font-size: 1.1rem;
 }
+
 
 #page-grid {
     display: grid;
@@ -83,6 +88,10 @@ table tbody tr {
     transition: all 1s linear;
 }
 
+table tbody tr td.tab-no-bg {
+    transition: none;
+}
+
 table tbody tr:nth-of-type(2n+1) {
     background-color: var(--complementcolor2dark);
 }
@@ -109,10 +118,11 @@ table tbody tr:nth-of-type(2n):hover {
                             "news promotions"
                             "schedule schedule"
                             "qa reviews";
+        gap: 0.5rem;
     }
 
     main, header, footer {
-        padding: 0 3%;
+        padding: 0 3.5%;
     }
 
     #news {
@@ -121,6 +131,10 @@ table tbody tr:nth-of-type(2n):hover {
 
     table {
         border-spacing: 1px;
+    }
+
+    img {
+        min-width: 500px;
     }
 }
 
@@ -132,7 +146,7 @@ table tbody tr:nth-of-type(2n):hover {
         display: block;
     }
     main, header, footer {
-        padding: 0 1%;
+        padding: 0 2%;
     }
     .iframe-tabs a {
         transition: none;
@@ -146,5 +160,8 @@ table tbody tr:nth-of-type(2n):hover {
     }
     #schedule {
         overflow-x: scroll;
+    }
+    img {
+        min-width: 250px;
     }
 }
