@@ -15,7 +15,7 @@ h4 {
 
 #page-grid {
     display: grid;
-    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-columns: 1fr 2fr 1fr;
     grid-auto-rows: minmax(100px, auto);
     gap: 1rem;
     grid-template-areas: "welcome welcome welcome"
@@ -85,7 +85,7 @@ table {
 }
 
 table tbody tr {
-    transition: all 1s linear;
+    transition: all 0.5s linear;
 }
 
 table tbody tr:nth-of-type(2n+1) {
