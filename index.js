@@ -33,8 +33,12 @@ app.get("/suma/:a/:b", function(req, res) {
     res.send(""+suma);
 });
 
-app.get("/", function(req, res) {
-    res.sendFile(__dirname+"/index.html");
+// app.get("/", function(req, res) {
+//     res.sendFile(__dirname+"/index.html");
+// });
+
+app.get("/", (req, res) => {
+    res.render("pages/index");
 });
 
 app.listen(8080);
