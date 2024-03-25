@@ -88,10 +88,6 @@ table tbody tr {
     transition: all 1s linear;
 }
 
-table tbody tr td.tab-no-bg {
-    transition: none;
-}
-
 table tbody tr:nth-of-type(2n+1) {
     background-color: var(--complementcolor2dark);
 }
@@ -165,6 +161,9 @@ table tbody tr:nth-of-type(2n):hover {
         min-width: 250px;
     }
     #linktop, #arrow {
+        transition: none;
+    }
+    table tbody tr {
         transition: none;
     }
 }

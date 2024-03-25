@@ -1,7 +1,7 @@
 {
   "name": "proiect_tw",
   "version": "1.0.0",
-  "description": "",
+  "description": "Codul Express pentru serverul local al proiectului BG Shop",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
