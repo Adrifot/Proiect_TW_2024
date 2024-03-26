@@ -37,8 +37,14 @@ app.get("/suma/:a/:b", function(req, res) {
 //     res.sendFile(__dirname+"/index.html");
 // });
 
-app.get("/", (req, res) => {
+app.get(["/", "/index", "/home"], (req, res) => {
     res.render("pages/index");
+});
+
+app.get("/*", (req, res) => {
+    res.render("pages"+req.url, (result, err)=>{
+        res.send(result.toString("utf-8"));
+    });
 });
 
 app.listen(8080);
