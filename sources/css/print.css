@@ -1,0 +1,77 @@
+@media print {
+
+    #header, #footer {
+        page-break-after: always;
+    }
+
+    nav {
+      display: block;
+    }
+
+    #foot-banner {
+        position: absolute;
+        top:0.3em;
+        right:0.3em;
+        width:50%;
+        z-index: 1;
+        display: block;
+        border: 3px double black;
+        margin: 1cm;
+    }
+
+    figure, .iframe-container, #linktop, #img1-download {
+        display: none;
+    }
+
+    #page-grid {
+        display:block;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    .menu, .menu li {
+        display: block;
+        text-decoration: none;
+        height: auto;
+        width: auto;
+        padding-left: 20px;
+        list-style-type: circle;
+        border: none;
+    }
+
+    .meniu {
+        page-break-after: always;
+    }
+
+    #watermark {
+        position: fixed;
+        display: block;
+        width: 60%;
+        height: 10%;
+        text-align: center;
+        color: black;
+        opacity: 0.3;
+        bottom: 50px;
+        right: 0;
+        border: none;
+        outline: none;
+        text-decoration: none;
+    }
+
+    @page:right{
+        margin: 1cm 2cm;
+    }
+
+    @page:left{
+        margin: 2cm 1cm;
+    }
+  }
+
+  
