@@ -1,20 +1,19 @@
 $bgcolor: var(--bgcolor);
 $padding-med: var(--txtpadding);
 $padding-small: var(--txtpaddingsmall);
-$hamburger-margin: 0.15em;
+$hamburger-margin: 0.2em;
 $yellow: var(--complementcolor);
 $lightgreen: var(--complementcolor2);
 $white: var(--txtcolor);
 
-#hamburger-menu, nav input {
-    /*display: inline-block;*/
+#hamburger-menu, #drop-down {
     display: none;
 }
 
 .hamburger-line {
     display: block;
-    width: 1rem;
-    height: 0.15rem;
+    width: 2rem;
+    height: 0.3rem;
     background-color: $bgcolor;
     margin-bottom: $hamburger-margin;
 }
@@ -29,7 +28,7 @@ $white: var(--txtcolor);
     &, li {
         list-style-type: none;
     }
-    li {
+    >li {
         display: block;
         position: relative;
         span {
@@ -37,10 +36,11 @@ $white: var(--txtcolor);
         }
         margin-right: $padding-med;
         cursor: pointer;
-        .hover-block {
-            // box-sizing: border-box;
+        &::after {
+            content: "";
             position: absolute;
             top: 0.5rem;
+            left: 0;
             width: 100%;
             height: 0px;
             opacity: 0.5;
@@ -50,7 +50,7 @@ $white: var(--txtcolor);
             border: 0px solid $white;
             box-shadow: $yellow 1px 1px 3px 3px inset;
         }
-        &:hover .hover-block{
+        &:hover::after{
             height: 150%;
             transform: translateY(-0.75rem);
             box-sizing: border-box;
@@ -71,18 +71,17 @@ $white: var(--txtcolor);
             li {
                 padding: $padding-small;
                 &::after {
+                    position: relative;
                     content: "";
                     opacity: 0;
                     width: 100%;
-                    height: 0.1rem;
+                    height: 0;
                     display: block;
-                    background: $white;
+                    border-bottom: 5px double $white;
                     transition: all 1s ease;
                 }
-                &:hover {
-                    &::after {
-                        opacity: 1;
-                    }
+                &:hover::after {
+                    opacity: 1;
                 }
             }
         }
@@ -100,14 +99,89 @@ $white: var(--txtcolor);
 }
 
 @keyframes dropmenu_animation {
+    50% {
+        opacity: 0.5;
+        transform: scale(0.5, 0.5);
+    }
     100%{
         opacity: 1;
         transform: scale(1, 1);
     }
 }
 
+@keyframes clip_menu {
+    0% {
+        width: 0;
+        clip-path: polygon(
+            0% 0%,
+            70% 0%,
+            100% 50%,
+            70% 100%,
+            0% 100%
+        )
+    }
+    25% {
+        width: 50%;
+    }
+    50% {
+        width: 100%;
+    }
+    75% {
+        width: 150%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 1280px) {
     .menu {
         padding-bottom: $padding-med;
+        li:hover::after {
+            transition: none;
+        }
+        text-align: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        display: none;
+        &>* {
+            margin-bottom: $padding-small;
+        }
+        li ul {
+            animation: none;
+        }
+    }
+    #navhome {
+        display: none;
+    }
+    #hamburger-menu {
+        display: block;
+        padding-bottom: $padding-med;
+    }
+    #drop-down:checked + .menu {
+        display: block;
+        z-index: 2;
+        position: relative;
+    }
+    #drop-down:checked + .menu>li>div, #drop-down:checked + .menu>li>a {
+        z-index: 2;
+        position: relative;
+    }
+    .menu>li:hover ul {
+        position: absolute;
+        width: 100%;
+        z-index: 200;
+        transform: scale(1, 1);
+    }
+    #drop-down:checked + .menu>li ul>* {
+        position: relative;
+        z-index: 200;
+    }
+    .menu>li:hover>ul {
+        z-index: 200;
+    }
+    nav label {
+        display: inline-block;
     }
 }
