@@ -8,6 +8,10 @@
       display: block;
     }
 
+    h1 {
+        padding-top: 100px;
+    }
+
     #foot-banner {
         position: absolute;
         top:0.3em;
@@ -17,6 +21,7 @@
         display: block;
         border: 3px double black;
         margin: 1cm;
+        text-align: center;
     }
 
     figure, .iframe-container, #linktop, #img1-download {
