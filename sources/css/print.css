@@ -55,11 +55,11 @@
         display: block;
         width: 60%;
         height: 10%;
+        right: 20%;
         text-align: center;
         color: black;
         opacity: 0.3;
         bottom: 50px;
-        right: 0;
         border: none;
         outline: none;
         text-decoration: none;
