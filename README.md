@@ -5,4 +5,6 @@
 
 **Etapa 2** - finalizata pe 21/03/2024.
 
-**Etapa 3** - work in progress...
+**Etapa 3** - dinalizata pe 27/03/2024.
+
+**Etapa 4** - work in progress...
