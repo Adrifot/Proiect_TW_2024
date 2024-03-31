@@ -82,7 +82,7 @@
   border-bottom: 5px double var(--txtcolor);
   transition: all 1s ease;
 }
-.menu > li:hover ul li a:hover::after {
+.menu > li:hover ul li:hover a::after {
   opacity: 1;
 }
 

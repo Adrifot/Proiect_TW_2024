@@ -80,7 +80,6 @@ $nrnav: 4;
                 a {
                     display: inline-block;
                     &::after {
-                        //position: relative;
                         content: "";
                         opacity: 0;
                         width: 100%;
@@ -89,9 +88,9 @@ $nrnav: 4;
                         border-bottom: 5px double $white;
                         transition: all 1s ease;
                     }
-                    &:hover::after {
-                        opacity: 1;
-                    }
+                }
+                &:hover a::after {
+                    opacity: 1;
                 }
             }
         }
