@@ -23,6 +23,7 @@
 .menu > li {
   display: block;
   position: relative;
+  padding: var(--txtpaddingsmall);
   margin-right: var(--txtpadding);
   cursor: pointer;
 }
@@ -32,20 +33,21 @@
 .menu > li::after {
   content: "";
   position: absolute;
-  top: 0.5rem;
+  top: 50%;
   left: 0;
   width: 100%;
   height: 0px;
   opacity: 0.5;
   background-color: var(--complementcolor2);
-  border-radius: 1rem;
+  border: 0px solid white;
+  border-radius: 0.5rem;
   transition: all 0.5s ease-in-out;
   border: 0px solid var(--txtcolor);
   box-shadow: var(--complementcolor) 1px 1px 3px 3px inset;
 }
 .menu > li:hover::after {
-  height: 150%;
-  transform: translateY(-0.75rem);
+  height: 100%;
+  top: 0;
   box-sizing: border-box;
   border: 3px solid var(--txtcolor);
 }
@@ -58,6 +60,9 @@
 .menu > li:hover ul {
   display: block;
   position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
   z-index: 100;
   background-color: var(--complementcolor);
   transform-origin: left top;
@@ -65,8 +70,10 @@
 .menu > li:hover ul li {
   padding: var(--txtpaddingsmall);
 }
-.menu > li:hover ul li::after {
-  position: relative;
+.menu > li:hover ul li a {
+  display: inline-block;
+}
+.menu > li:hover ul li a::after {
   content: "";
   opacity: 0;
   width: 100%;
@@ -75,7 +82,7 @@
   border-bottom: 5px double var(--txtcolor);
   transition: all 1s ease;
 }
-.menu > li:hover ul li:hover::after {
+.menu > li:hover ul li a:hover::after {
   opacity: 1;
 }
 
@@ -99,21 +106,24 @@
 }
 @keyframes clip_menu {
   0% {
-    width: 0;
-    -webkit-clip-path: polygon(0% 0%, 70% 0%, 100% 50%, 70% 100%, 0% 100%);
-            clip-path: polygon(0% 0%, 70% 0%, 100% 50%, 70% 100%, 0% 100%);
+    -webkit-clip-path: polygon(0 0, 0 0, 0 50%, 0 100%, 0 100%);
+            clip-path: polygon(0 0, 0 0, 0 50%, 0 100%, 0 100%);
   }
   25% {
-    width: 50%;
+    -webkit-clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 100%, 0 100%);
+            clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 100%, 0 100%);
   }
   50% {
-    width: 100%;
+    -webkit-clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 100%, 0 100%);
+            clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 100%, 0 100%);
   }
   75% {
-    width: 150%;
+    -webkit-clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
+            clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
   }
   100% {
-    width: 100%;
+    -webkit-clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
+            clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
   }
 }
 @media screen and (max-width: 1280px) {
@@ -124,15 +134,27 @@
     align-items: center;
     justify-content: space-around;
     display: none;
-  }
-  .menu li:hover::after {
-    transition: none;
+    background-color: var(--bgcolor);
   }
   .menu > * {
     margin-bottom: var(--txtpaddingsmall);
   }
   .menu li ul {
     animation: none;
+  }
+  .menu > li {
+    animation: clip_menu 1.5s linear 1 forwards;
+    margin: 0;
+    padding: var(--txtpadding) 0;
+    width: 100%;
+    background-color: var(--complementcolor);
+  }
+  .menu > li ul {
+    border-bottom: 2px solid var(--bgcolor);
+  }
+  .menu > li:hover {
+    -webkit-clip-path: none !important;
+            clip-path: none !important;
   }
   #navhome {
     display: none;
@@ -144,11 +166,7 @@
   #drop-down:checked + .menu {
     display: block;
     z-index: 2;
-    position: relative;
-  }
-  #drop-down:checked + .menu > li > div, #drop-down:checked + .menu > li > a {
-    z-index: 2;
-    position: relative;
+    padding: 0;
   }
   .menu > li:hover ul {
     position: absolute;
@@ -165,5 +183,21 @@
   }
   nav label {
     display: inline-block;
+  }
+  .menu:nth-child(1) {
+    position: absolute;
+    width: 100%;
+  }
+  .menu:nth-child(2) {
+    position: absolute;
+    width: 100%;
+  }
+  .menu:nth-child(3) {
+    position: absolute;
+    width: 100%;
+  }
+  .menu:nth-child(4) {
+    position: absolute;
+    width: 100%;
   }
 }/*# sourceMappingURL=navbar.css.map */

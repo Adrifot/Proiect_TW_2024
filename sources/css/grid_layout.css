@@ -121,8 +121,10 @@ td.tab-no-bg {
                             "qa reviews";
         gap: 0.5rem;
     }
-
-    main, header, footer {
+    header {
+        padding: 0;
+    }
+    main, footer {
         padding: 0 3.5%;
     }
 
@@ -146,7 +148,10 @@ td.tab-no-bg {
     #page-grid {
         display: block;
     }
-    main, header, footer {
+    header {
+        padding: 0;
+    }
+    main, footer {
         padding: 0 2%;
     }
     .iframe-tabs a {

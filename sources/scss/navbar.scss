@@ -3,8 +3,10 @@ $padding-med: var(--txtpadding);
 $padding-small: var(--txtpaddingsmall);
 $hamburger-margin: 0.2em;
 $yellow: var(--complementcolor);
+$yellowdark: var(--complementcolordark);
 $lightgreen: var(--complementcolor2);
 $white: var(--txtcolor);
+$nrnav: 4;
 
 #hamburger-menu, #drop-down {
     display: none;
@@ -31,6 +33,7 @@ $white: var(--txtcolor);
     >li {
         display: block;
         position: relative;
+        padding: $padding-small;
         span {
             padding: 0 $padding-small;
         }
@@ -39,20 +42,21 @@ $white: var(--txtcolor);
         &::after {
             content: "";
             position: absolute;
-            top: 0.5rem;
+            top: 50%;
             left: 0;
             width: 100%;
             height: 0px;
             opacity: 0.5;
             background-color: $lightgreen;
-            border-radius: 1rem;
+            border: 0px solid white;
+            border-radius: 0.5rem;
             transition: all 0.5s ease-in-out;
             border: 0px solid $white;
             box-shadow: $yellow 1px 1px 3px 3px inset;
         }
         &:hover::after{
-            height: 150%;
-            transform: translateY(-0.75rem);
+            height: 100%;
+            top: 0;
             box-sizing: border-box;
             border: 3px solid $white;
         }
@@ -65,23 +69,29 @@ $white: var(--txtcolor);
         &:hover ul{
             display: block;
             position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
             z-index: 100;
             background-color: $yellow;
             transform-origin: left top;
             li {
                 padding: $padding-small;
-                &::after {
-                    position: relative;
-                    content: "";
-                    opacity: 0;
-                    width: 100%;
-                    height: 0;
-                    display: block;
-                    border-bottom: 5px double $white;
-                    transition: all 1s ease;
-                }
-                &:hover::after {
-                    opacity: 1;
+                a {
+                    display: inline-block;
+                    &::after {
+                        //position: relative;
+                        content: "";
+                        opacity: 0;
+                        width: 100%;
+                        height: 0;
+                        display: block;
+                        border-bottom: 5px double $white;
+                        transition: all 1s ease;
+                    }
+                    &:hover::after {
+                        opacity: 1;
+                    }
                 }
             }
         }
@@ -111,45 +121,49 @@ $white: var(--txtcolor);
 
 @keyframes clip_menu {
     0% {
-        width: 0;
-        clip-path: polygon(
-            0% 0%,
-            70% 0%,
-            100% 50%,
-            70% 100%,
-            0% 100%
-        )
+        clip-path: polygon(0 0, 0 0, 0 50%, 0 100%, 0 100%);
     }
     25% {
-        width: 50%;
-    }
+        clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 100%, 0 100%);
+    }   
     50% {
-        width: 100%;
+        clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 100%, 0 100%);
     }
     75% {
-        width: 150%;
+        clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
     }
     100% {
-        width: 100%;
+        clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
     }
 }
 
 @media screen and (max-width: 1280px) {
     .menu {
         padding-bottom: $padding-med;
-        li:hover::after {
-            transition: none;
-        }
         text-align: center;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
         display: none;
+        background-color: $bgcolor;
         &>* {
             margin-bottom: $padding-small;
         }
         li ul {
             animation: none;
+        }
+        >li {
+            animation: clip_menu 1.5s linear 1 forwards;
+            margin: 0;
+            padding: $padding-med 0;
+            width: 100%;
+            background-color: $yellow;
+            ul {
+                border-bottom: 2px solid $bgcolor;
+            }
+            &:hover {
+                clip-path: none !important;
+            }
         }
     }
     #navhome {
@@ -162,11 +176,7 @@ $white: var(--txtcolor);
     #drop-down:checked + .menu {
         display: block;
         z-index: 2;
-        position: relative;
-    }
-    #drop-down:checked + .menu>li>div, #drop-down:checked + .menu>li>a {
-        z-index: 2;
-        position: relative;
+        padding: 0;
     }
     .menu>li:hover ul {
         position: absolute;
@@ -183,5 +193,11 @@ $white: var(--txtcolor);
     }
     nav label {
         display: inline-block;
+    }
+    @for $i from 1 through $nrnav {
+        .menu:nth-child(#{$i}) {
+            position: absolute;
+            width: 100%;
+        }
     }
 }
