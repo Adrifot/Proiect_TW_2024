@@ -1,0 +1,174 @@
+:root {
+    /* colors */
+    --txtcolor: #FFFCFF;
+    --bgcolor: #1B2F33;
+    --complementcolor: #FFD23F;
+    --highlightcolor: #F02D3A;
+    --highlightcolordark: #BF0D19;
+    --complementcolor2: #729EA1;
+    --bgcolorlight: #2A4B50;
+    --complementcolor2dark: #426E71;
+    --complementcolordark: #CC9C00;
+    --txtcolordark: #505050;
+    --transparent: rgba(0, 0, 0, 0);
+
+    /* spacing */
+    --spacing: 7.5%;
+    --spacingsmall: 3.5%;
+    --txtpadding: 1.5rem;
+    --txtpaddingsmall: 0.5rem;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: "Lato", sans-serif;
+ }
+
+html {
+    padding: 0;
+    margin: 0;
+}
+
+// @mixin extLink {
+//     a[href^="http"]:not(.iframe-tabs a)::before {
+//         content: "\2BB3";
+//         font-size: 1.5rem;
+//     }
+//     a[href^="http"]:not(.iframe-tabs a):hover::before {
+//         color: var(--txtcolor);
+//     }
+// }
+
+//@include extLink;
+
+body {
+    background-color: var(--bgcolor);
+    padding: 0;
+}
+
+h1 {
+    padding: var(--txtpadding) 0;
+}
+
+h2, h3, h4 {
+    color: var(--complementcolor);
+    padding: var(--txtpadding) var(--txtpaddingsmall);
+}
+
+header, main, footer {
+    padding: 0 var(--spacing);
+}
+
+header, footer {
+    background-color: var(--complementcolor);
+    padding: 0 var(--spacing) var(--txtpadding) var(--spacing);
+}
+
+header nav li, footer * {
+    color: var(--bgcolor);
+}
+
+header {
+    margin-bottom: var(--spacingsmall);
+}
+
+footer {
+    margin-top: var(--spacingsmall);
+    padding-top: var(--txtpaddingsmall);
+    padding-bottom: var(--txtpaddingsmall);
+    
+}
+
+h1, header a {
+    color: var(--bgcolor);
+    margin-top: 0;
+    text-decoration: none;
+}
+
+p, li, figcaption, details, footer {
+    color: var(--txtcolor);
+}
+
+p {
+    padding: var(--txtpaddingsmall);
+}
+
+details, details li, details a {
+    padding: var(--txtpaddingsmall);
+    list-style-type: none;
+}
+
+a {
+    color: var(--highlightcolor);
+}
+
+main a, footer a:not(#linktop) {
+    background: radial-gradient(var(--complementcolor) 0%, var(--complementcolor) 40%, var(--transparent) 80%, var(--transparent) 100%);
+    border-radius: 50%;
+    background-position: center;
+    background-size: 0%;
+    background-repeat: no-repeat;
+    transition: all 1s linear;
+}
+
+main a:visited, footer a:visited {
+    color: var(--highlightcolordark);
+}
+
+main a:hover, footer a:hover:not(#linktop) {
+    background-size: 100%;
+}
+
+main a:active, footer a:active:not(#linktop) {
+    border: 2px solid var(--txtcolor);
+    transition: none;
+    border-radius: 0;
+}
+
+img {
+    min-width: 100px;
+    width: 60%;
+    max-width: 1000px;
+}
+
+#linktop {
+    display: block;
+    opacity: 0.5;
+    position: fixed; 
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px dashed var(--txtcolor);
+    padding: auto;
+    border-radius: 50%;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.5s linear;
+    opacity: 0.3;
+    bottom:0.3em;
+    left:0.3em;
+    background: linear-gradient(45deg, var(--bgcolorlight), var(--complementcolor2), var(--bgcolorlight));
+}
+
+#arrow {
+    color: var(--txtcolor);
+    text-decoration: none;
+    margin: auto;
+    line-height: 2.5rem;
+    font-size: 1.25rem;
+    font-weight: 900;
+    transition: all 0.5s linear;
+}
+
+#linktop:hover {
+    transform: rotateZ(90deg);
+    opacity: 1;
+}
+
+#linktop:hover #arrow {
+    transform: rotate(-90deg);
+}
+
+#foot-banner, #watermark {
+    display: none;
+}
