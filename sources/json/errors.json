@@ -1,0 +1,55 @@
+{
+    "basePath": "/sources/images/errorimgs",
+    "defaultErr":{
+        "title":"Eroare !!!",
+        "text": "A survenit eroare.",
+        "image":"forbidden.png"
+    },
+    "errInfo": [
+        {
+            "id":404,
+            "status":true,
+            "title":"404 - N-am, bre!",
+            "text": "Nu-i pe serverul ăsta, sorry, caută în altă parte!",
+            "image":"err404.png"
+        },
+        {
+            "id":403,
+            "status":true,
+            "title":"403 - Da, tu ce cauți aici?!!",
+            "text": "Ai greșit ruta. Stânga-împrejur și pa!",
+            "image":"forbidden.png"
+        },
+        {
+            "id":400,
+            "status":true,
+            "title":"400 - bad request",
+            "text": "Cerere gresita",
+            "image":"forbidden.png"
+        },
+        
+        {
+            "id":1,
+            "status":false,
+            "title":"Site în lucru",
+            "text": "Muncim, muncim!",
+            "image":"forbidden.png"
+        },
+        
+        {
+            "id":2,
+            "status":false,
+            "title":"Eroare baza date",
+            "text": "Reveniti mai tarziu!",
+            "image":"forbidden.png"
+        },
+        
+        {
+            "id":3,
+            "status":false,
+            "title":"Date gresit",
+            "text": "Verificati datele",
+            "image":"forbidden.png"
+        }
+    ]
+}

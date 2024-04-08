@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="sources/css/error.css">
+    <%- include("../partials/head.ejs") %>
+    <title>Oopsie!</title>
+</head>
+<body>
+    <%- include("../partials/header.ejs") %>
+    <main>
+        <div id="err">
+            <div id="errimg">
+                <img src="<%- locals.image %>">
+            </div>
+        </div>
+        <section>
+            <h2><%- locals.title %></h2>
+            <p><%- locals.text %></p>
+        </section>
+    </main>
+    <%- include("../partials/footer.ejs") %>
+</body>
+</html>
