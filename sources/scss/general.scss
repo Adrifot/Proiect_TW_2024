@@ -30,17 +30,17 @@ html {
     margin: 0;
 }
 
-// @mixin extLink {
-//     a[href^="http"]:not(.iframe-tabs a)::before {
-//         content: "\2BB3";
-//         font-size: 1.5rem;
-//     }
-//     a[href^="http"]:not(.iframe-tabs a):hover::before {
-//         color: var(--txtcolor);
-//     }
-// }
+@mixin extLink {
+    a[href^="http"]:not(.iframe-tabs a)::before {
+        content: "\2BB3";
+        font-size: 1.5rem;
+    }
+    a[href^="http"]:not(.iframe-tabs a):hover::before {
+        color: var(--txtcolor);
+    }
+}
 
-//@include extLink;
+@include extLink;
 
 body {
     background-color: var(--bgcolor);
@@ -107,9 +107,9 @@ main a, footer a:not(#linktop) {
     background: radial-gradient(var(--complementcolor) 0%, var(--complementcolor) 40%, var(--transparent) 80%, var(--transparent) 100%);
     border-radius: 50%;
     background-position: center;
-    background-size: 0%;
+    background-size: 0% 0%;
     background-repeat: no-repeat;
-    transition: all 1s linear;
+    transition: all 0.5s linear;
 }
 
 main a:visited, footer a:visited {
@@ -117,7 +117,7 @@ main a:visited, footer a:visited {
 }
 
 main a:hover, footer a:hover:not(#linktop) {
-    background-size: 100%;
+    background-size: 100% 100%;
 }
 
 main a:active, footer a:active:not(#linktop) {

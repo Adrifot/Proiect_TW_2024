@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   /* colors */
   --txtcolor: #FFFCFF;
@@ -27,6 +28,15 @@
 html {
   padding: 0;
   margin: 0;
+}
+
+a[href^=http]:not(.iframe-tabs a)::before {
+  content: "⮳";
+  font-size: 1.5rem;
+}
+
+a[href^=http]:not(.iframe-tabs a):hover::before {
+  color: var(--txtcolor);
 }
 
 body {
@@ -93,9 +103,9 @@ main a, footer a:not(#linktop) {
   background: radial-gradient(var(--complementcolor) 0%, var(--complementcolor) 40%, var(--transparent) 80%, var(--transparent) 100%);
   border-radius: 50%;
   background-position: center;
-  background-size: 0%;
+  background-size: 0% 0%;
   background-repeat: no-repeat;
-  transition: all 1s linear;
+  transition: all 0.5s linear;
 }
 
 main a:visited, footer a:visited {
@@ -103,7 +113,7 @@ main a:visited, footer a:visited {
 }
 
 main a:hover, footer a:hover:not(#linktop) {
-  background-size: 100%;
+  background-size: 100% 100%;
 }
 
 main a:active, footer a:active:not(#linktop) {
