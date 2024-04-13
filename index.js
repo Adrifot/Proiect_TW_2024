@@ -13,7 +13,7 @@ objGlobal = {
     backupFolder: path.join(__dirname, "backup")
 }
 
-const folders = ["temp", "temp1", "backup"];
+const folders = ["temp", "backup"];
 for(let folder of folders) {
     let folderPath = path.join(__dirname, folder);
     if(!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
