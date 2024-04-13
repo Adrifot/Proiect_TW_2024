@@ -15,7 +15,7 @@
   /* spacing */
   --spacing: 7.5%;
   --spacingsmall: 3.5%;
-  --txtpadding: 1.3rem;
+  --txtpadding: 1.5rem;
   --txtpaddingsmall: 0.5rem;
 }
 
@@ -167,4 +167,4 @@ img {
 
 #foot-banner, #watermark {
   display: none;
-}/*# sourceMappingURL=general.css.map */
+}

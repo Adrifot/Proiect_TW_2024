@@ -13,7 +13,7 @@ objGlobal = {
     backupFolder: path.join(__dirname, "backup")
 }
 
-const folders = ["temp", "backup"];
+folders = ["temp", "backup"];
 for(let folder of folders) {
     let folderPath = path.join(__dirname, folder);
     if(!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
@@ -108,6 +108,33 @@ function throwError(res, _id, _title, _text, _image){
         }); 
     }
 }
+
+function compileSass(sassPath, cssPath) {
+    if(!cssPath) cssPath = path.basename(sassPath).split(".")[0] + ".css";
+    if(!path.isAbsolute(sassPath)) sassPath = path.join(objGlobal.sassFolder, sassPath);
+    if(!path.isAbsolute(cssPath)) cssPath = path.join(objGlobal.cssFolder, cssPath);
+    
+    let backupPath = path.join(objGlobal.backupFolder, "sources/css");
+    if(!fs.existsSync(backupPath)) fs.mkdirSync(backupPath, {recursive: true});
+
+    let cssFolderName = path.basename(cssPath);
+    if(fs.existsSync(cssPath)) fs.copyFileSync(cssPath, path.join(objGlobal.backupFolder, "sources/css", cssFolderName));
+    resultFolder = sass.compile(sassPath, {"sourceMap": true});
+    fs.writeFileSync(cssPath, resultFolder.css);
+}
+
+folders = fs.readdirSync(objGlobal.sassFolder);
+for(let folder of folders) {
+    if(path.extname(folder) == ".scss") compileSass(folder);
+}
+
+fs.watch(objGlobal.sassFolder, (ev, fold) => {
+    console.log(ev, fold);
+    if(ev == "change" || ev == "rename") {
+        let fullPath = path.join(objGlobal.sassFolder, fold);
+        if(fs.existsSync(fullPath)) compileSass(fullPath);
+    }
+});
 
 initErr();
 
