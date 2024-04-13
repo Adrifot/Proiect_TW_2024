@@ -1,5 +1,7 @@
 .newstitle {
-    color: var(--complementcolor2)
+    color: var(--complementcolor2);
+    padding-bottom: var(--txtpaddingsmall);
+    padding-top: var(--txtpadding);
 }
 
 figure {
@@ -36,4 +38,12 @@ figure {
 
 .iframe-tabs a:hover {
     background-color: var(--complementcolordark);
+}
+
+video {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+    min-width: 150px;
+    max-width: 300px;
 }

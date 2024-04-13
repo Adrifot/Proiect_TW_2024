@@ -95,9 +95,17 @@
 }
 
 @keyframes dropmenu_animation {
+  25% {
+    opacity: 0.25;
+    transform: scale(0.25, 0.25);
+  }
   50% {
     opacity: 0.5;
     transform: scale(0.5, 0.5);
+  }
+  75% {
+    opacity: 0.75;
+    transform: scale(0.75, 0.75);
   }
   100% {
     opacity: 1;

@@ -116,11 +116,11 @@ main a:visited, footer a:visited {
     color: var(--highlightcolordark);
 }
 
-main a:hover, footer a:hover:not(#linktop) {
+main a:hover:not(.iframelink), footer a:hover:not(#linktop) {
     background-size: 100% 100%;
 }
 
-main a:active, footer a:active:not(#linktop) {
+main a:active:not(.iframelink), footer a:active:not(#linktop) {
     border: 2px solid var(--txtcolor);
     transition: none;
     border-radius: 0;
