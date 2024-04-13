@@ -9,15 +9,15 @@
         {
             "id":404,
             "status":true,
-            "title":"404 - N-am, bre!",
-            "text": "Nu-i pe serverul ăsta, sorry, caută în altă parte!",
+            "title":"404 Not Found",
+            "text": "Nu am gasit ceea ce cautati! Incercati in alta parte!",
             "image":"err404.png"
         },
         {
             "id":403,
             "status":true,
-            "title":"403 - Da, tu ce cauți aici?!!",
-            "text": "Ai greșit ruta. Stânga-împrejur și pa!",
+            "title":"403 - Interzis",
+            "text": "Nu aveti acces aici!",
             "image":"forbidden.png"
         },
         {
@@ -47,7 +47,7 @@
         {
             "id":3,
             "status":false,
-            "title":"Date gresit",
+            "title":"Date gresite",
             "text": "Verificati datele",
             "image":"forbidden.png"
         }
