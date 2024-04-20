@@ -19,10 +19,10 @@
                     Bine ați venit pe site-ul <b>BG Shop</b>, destinația perfectă pentru pasionații de <b>jocuri de societate</b>! Aici vă așteaptă o experiență captivantă în lumea divertismentului interactiv! Indiferent dacă sunteți un veteran experimentat sau un începător curios, 
                     BG Shop vă oferă o gamă largă de jocuri de societate, de la clasicele preferate până la cele mai noi lansări. Vă invităm să explorați universul fascinant al jocurilor de societate și să vă bucurați de momente memorabile alături de prieteni și familie!
                 </p>
-                <figure>
+                <figure id="banner-small">
                     <picture>
-                        <source srcset="/sources/images/boardgame1-mobile.jpg" media="(max-width: 500px)">
-                        <source srcset="/sources/images/boardgame1-tablet.jpg" media="(max-width: 1000px)">
+                        <source srcset="/sources/images/boardgame1-mobile.jpg" media="(max-width: 820px)">
+                        <source srcset="/sources/images/boardgame1-tablet.jpg" media="(max-width: 1280px)">
                         <img src="/sources/images/boardgame1.jpg" alt="board game" title="joc de societate">
                     </picture>
                     <figcaption>Un board game misto</figcaption>
@@ -171,23 +171,28 @@
                     </ul>
                 </details>
             </section>
-            <section id="reviews">
-                <h3>Pareri si Recenzii</h3>
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, odio labore! Repellendus fugit alias fugiat numquam, quasi veritatis, eaque in, dicta ratione fuga magni optio? Commodi eveniet ipsum ad expedita.
-                    Perferendis dolore explicabo tenetur consequuntur architecto earum soluta deleniti ullam laudantium odio repellendus qui, sequi repellat rerum optio, praesentium ipsum consectetur deserunt quo perspiciatis sunt! Sequi et placeat totam corrupti.
-                    Laborum officiis sequi recusandae at autem quas minus praesentium natus aspernatur voluptatem doloribus quidem sint, dolorem corrupti? Iusto, vel fuga ullam, eligendi, laborum impedit repudiandae labore esse commodi nulla error.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam deserunt tempore asperiores hic quae molestias excepturi laboriosam, eum eveniet provident ducimus doloribus est consectetur nisi. Consequuntur at asperiores fuga obcaecati.
-                    Quae nulla libero nisi nesciunt? Ratione, accusantium odio! Velit fugit fuga optio voluptatum eligendi saepe quam ipsa debitis, sed deleniti praesentium soluta voluptates animi ea incidunt tempore, ex voluptas non!
-                    Laborum error eos fugit saepe animi sit. Delectus magni reiciendis cum quis corporis, optio, fugit ad odio sed porro impedit incidunt corrupti, repellat perspiciatis suscipit vitae assumenda nam vero ratione.
-                    Eos saepe facilis labore eaque, beatae sed nihil assumenda dolor, rerum iste hic facere odio accusamus reprehenderit expedita! Nisi vero sed sint repellendus temporibus voluptas ipsum commodi possimus explicabo voluptates.
-                </p>
-                <p>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quaerat impedit ab inventore placeat enim dolorem voluptate quo repellendus eligendi praesentium, consequuntur est reprehenderit, pariatur, quidem neque laboriosam. Blanditiis, similique excepturi.
-                    Suscipit quam odit deleniti ducimus impedit eveniet consectetur hic amet facere fugit et dicta soluta dolor tenetur eius explicabo voluptatibus, excepturi recusandae ut! Sit eligendi nam aliquid est enim necessitatibus.
-                </p>
+            <section id="static-gallery">
+                <h3>Galerie</h3>
+                <div id="gallery-grid">
+                    <% let currHour = new Date().getHours(); %>
+                    <% let filteredImgs = locals.images.filter(image => {
+                        let startTime = parseInt(image.time.split("-")[0].trim().split(":")[0]);
+                        let endTime = parseInt(image.time.split("-")[1].trim().split(":")[0]);
+                        if(startTime <= currHour && endTime >= currHour) return true;
+                        if(startTime >= endTime && (currHour >= startTime || currHour <= endTime)) return true;
+                        return false;
+                    }); %>
+                    <% let displayedImgs = filteredImgs.slice(0, 10); %>
+                    <% for(let img of displayedImgs) { %>
+                        <figure>
+                            <picture>
+                                <source src="<%= img.filename_medium %>" media="(max-width: 1280px)">
+                                <img src="<%= img.filename %>" alt="<%= img.title %>">
+                                <figcaption><%= img.description %></figcaption>
+                            </picture>
+                        </figure>
+                    <% } %>
+                </div>
             </section>
         </div>
         <div id="watermark"><p>Fota<br>Adrian</p></div>

@@ -1,0 +1,143 @@
+{
+    "galleryPath": "sources/images/gallery",
+    "images": [
+        {
+            "filename": "bloodrage.jpg",
+            "title": "Bloodrage",
+            "description": "Un joc cu figurine monstruase",
+            "time": "18:00 - 06:00"
+        },
+        {
+            "filename": "carcassone.jpg",
+            "title": "Carcassone",
+            "description": "Jocul clasic despre legendara cetate franceza",
+            "time": "06:00 - 18:00"
+        },
+        {
+            "filename": "chinese_chess.jpg",
+            "title": "Sah chinezesc",
+            "description": "Varianta de sah inventata in China",
+            "time": "11:00 - 21:00"
+        },
+        {
+            "filename": "civilization.jpg",
+            "title": "Civilization",
+            "description": "Construiti propria voastra civilizatie",
+            "time": "10:00 - 17:00"
+        },
+        {
+            "filename": "dnd_dice_colorful.jpg",
+            "title": "Zaruri de DnD colorate",
+            "description": "Aceste zaruri colorate pot fi folosite intr-un TTRPG",
+            "time": "10:00 - 21:00"
+        },
+        {
+            "filename": "dnd_dice_dark.jpg",
+            "title": "Zaruri de DnD stilizate",
+            "description": "Zaruri stilizate pentru DnD sau alte jocuri",
+            "time": "17:00 - 04:00"
+        },
+        {
+            "filename": "dnd_die.jpg",
+            "title": "Zar DnD negru",
+            "description": "O sesiune de DnD poate duce la crearea multor povesti",
+            "time": "16:00 - 00:00"
+        },
+        {
+            "filename": "dnd_monster.jpg",
+            "title": "Figurina Monstru DnD",
+            "description": "Aduna-ti prietenii pentru a invinge monstrul",
+            "time": "16:00 - 08:00"
+        },
+        {
+            "filename": "game_of_life.jpg",
+            "title": "Game of Life",
+            "description": "Jocul vietii: gaseste-ti un job, infiinteaza-ti o familie",
+            "time": "08:00 - 15:00"
+        },
+        {
+            "filename": "house.jpg",
+            "title": "Casa",
+            "description": "Un laborator din America de Sud isi asteapta cercetatorii",
+            "time": "20:00 - 10:00"
+        },
+        {
+            "filename": "ludo.jpg",
+            "title": "Nu te supara, frate!",
+            "description": "Joc clasic cunoscut in Vest sub numele de Ludo",
+            "time": "05:00 - 15:00"
+        },
+        {
+            "filename": "mahjong.jpg",
+            "title": "Mahjong",
+            "description": "Mahjong este un joc antic dar interesant",
+            "time": "14:00 - 22:00"
+        },
+        {
+            "filename": "pawn.jpg",
+            "title": "Pion",
+            "description": "Un joc simplist, dar complex",
+            "time": "00:00 - 13:00"
+        },
+        {
+            "filename": "retro_games.jpg",
+            "title": "Jocuri Retro",
+            "description": "Jocuri din copilaria parintilor tai",
+            "time": "00:00 - 20:00"
+        },
+        {
+            "filename": "risk.jpg",
+            "title": "Risk",
+            "description": "Un joc strategic in care riscul e inevitabil",
+            "time": "09:00 - 19:00"
+        },
+        {
+            "filename": "root.jpg",
+            "title": "Root",
+            "description": "Controleaza armatele animalelor din padure",
+            "time": "08:00 - 16:00"
+        },
+        {
+            "filename": "ticket_to_ride.jpg",
+            "title": "Ticket to Ride",
+            "description": "Joc popular despre trenuri",
+            "time": "00:00 - 10:00"
+        },
+        {
+            "filename": "tokens_dice.jpg",
+            "title": "Tokenuri si zaruri",
+            "description": "Multe jocuri au elemente detaliate",
+            "time": "00:00 - 09:00"
+        },
+        {
+            "filename": "waluigi.jpg",
+            "title": "Wario si Waluigi",
+            "description": "Figurine pentru colectionari",
+            "time": "00:00 - 08:00"
+        },
+        {
+            "filename": "word_game.jpg",
+            "title": "Joc de cuvinte",
+            "description": "Testeaza-ti vocabularul cu un joc de cuvinte",
+            "time": "18:00 - 08:00"
+        },
+        {
+            "filename": "strategy.jpg",
+            "title": "Joc de tactica si strategie",
+            "description": "Esti  gata sa cuceresti lumea?",
+            "time": "21:00 - 23:00"
+        },
+        {
+            "filename": "catan.jpg",
+            "title": "Legendarul Catan",
+            "description": "Depaseste-ti rivalii in legendarul Catan",
+            "time": "22:00 - 00:00"
+        },
+        {
+            "filename": "metro.jpg",
+            "title": "Metro 2034",
+            "description": "Supravietuieste in universul Metro 2034",
+            "time": "22:00 - 00:00"
+        }
+    ]
+}

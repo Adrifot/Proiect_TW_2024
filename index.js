@@ -5,9 +5,27 @@ const sharp = require('sharp');
 const sass = require('sass'); 
 //const ejs = require('ejs');
 
+const Client = require("pg").Client;
+
+var client = new Client({
+    user: "adrian",
+    database: "cti_2024",
+    password: "admin",
+    host: "localhost",
+    port: 5432
+});
+
+client.connect();
+
+client.query("select * from products;", function(err, rez) {
+    //console.log("Baza de date:\n");
+    if(err) console.log(err);
+    //console.log(rez);
+});
+
 objGlobal = {
     objErr: null,
-    objImgL: null,
+    objImg: null,
     sassFolder: path.join(__dirname, "sources/scss"),
     cssFolder: path.join(__dirname, "sources/css"),
     backupFolder: path.join(__dirname, "backup")
@@ -30,8 +48,37 @@ app.use("/sources", express.static(path.join(__dirname, "sources")));
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
 
 app.get(["/", "/index", "/home"], (req, res) => {
-    res.render("pages/index", {ip: req.ip});
+    res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images});
 });
+
+/*
+app.get("/produse", function(req, res){
+    client.query("select * from prajituri", function(err, rez){
+        if(err){
+            console.log(err);
+            afisareEroare(res, 2);
+        }
+        else{
+            res.render("pages/produse", {produse: rez.rows, optiuni:[]} )
+        }
+        
+    })
+})
+
+
+app.get("/produs/:id", function(req, res){
+    client.query(`select * from prajituri where id=${req.params.id}`, function(err, rez){
+        if(err){
+            console.log(err);
+            afisareEroare(res, 2);
+        }
+        else{
+            res.render("pages/produs", {prod: rez.rows[0]} )
+        }
+        
+    })
+})
+*/
 
 app.get("/currdate", function(req, res) {
     res.write("Current date: ");
@@ -136,6 +183,27 @@ fs.watch(objGlobal.sassFolder, (ev, fold) => {
     }
 });
 
+function initImg() {
+    var content = fs.readFileSync(path.join(__dirname, "sources/json/gallery.json")).toString("utf-8");
+    objGlobal.objImg = JSON.parse(content);
+
+    let images = objGlobal.objImg.images;
+    let absPath = path.join(__dirname, objGlobal.objImg.galleryPath);
+    let absPathMedium = path.join(__dirname, objGlobal.objImg.galleryPath, "medium");
+    
+    if(!fs.existsSync(absPathMedium)) fs.mkdirSync(absPathMedium);
+
+    for(let image of images) {
+        [fileName, ext] = image.filename.split(".");
+        let absFilePath = path.join(absPath, image.filename);
+        let absFilePathMedium = path.join(absPathMedium, fileName+".webp");
+        sharp(absFilePath).resize(300).toFile(absFilePathMedium);
+        image.filename_medium = path.join("/", objGlobal.objImg.galleryPath, "medium", fileName+".webp");
+        image.filename = path.join("/", objGlobal.objImg.galleryPath, image.filename);
+    }
+}
+
+initImg();
 initErr();
 
 app.listen(8080);
