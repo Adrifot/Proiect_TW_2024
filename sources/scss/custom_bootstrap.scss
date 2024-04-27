@@ -1,0 +1,10 @@
+@use '../../node_modules/bootstrap/scss/bootstrap.scss' with 
+(
+    $secondary: #2A4B50,
+    $primary: #FFD23F,
+    $success: #729EA1,
+    $danger: #BF0D19,
+    $spacer: 0.25rem,
+    // $font-family-base: "Lato",
+);
+

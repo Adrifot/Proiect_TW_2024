@@ -73,6 +73,7 @@ table caption {
     font-weight: bold;
     caption-side: bottom;
     border: none;
+    text-align: center;
 }
 
 table {
