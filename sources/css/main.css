@@ -91,6 +91,22 @@ video {
     content: counter(imgnr, lower-alpha) ") ";
 }
 
+#whoa {
+    grid-area: 2/2/2/4;
+    text-align: center;
+    margin: auto;
+    font-size: 3rem;
+}
+
+#sayyes {
+    transition: all 3s linear;
+    display: inline-block;
+}
+
+#whoa:hover #sayyes {
+    animation: whoa 1.2s;
+}
+
 #gallery-grid figure:nth-child(1) {
     grid-area: 1/1/1/2;
 }
@@ -122,10 +138,62 @@ video {
     grid-area: 3/4;
 }
 
+/* #warhammer-fig img {
+    width: 100%;
+    border-radius: 5%;
+}
+
+#warhammer-fig figcaption {
+    text-align: center;
+} */
+
+#warhammer-fig {
+    position: relative;
+    background-image: url("/sources/images/warhammer.jpg");
+    background-size: cover;
+    width: 100%;
+    height: 500px;
+    filter: brightness(150%);
+    transition: all 2s linear;
+}
+
+
+#warhammer-fig::before, #warhammer-fig::after  {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: all 2s linear;
+}
+
+#warhammer-fig::before {
+    background-color:  var(--bgcolor);
+    mix-blend-mode: lighten;
+}
+
+#warhammer-fig::after {
+    background-color:  var(--high);
+    mix-blend-mode: darken;
+} 
+
+#warhammer-fig:hover::before {
+    background-color:  var(--bgcolor);
+    mix-blend-mode: lighten;
+}
+
+#warhammer-fig:hover::after {
+    background-color:  var(--highlightcolor);
+    mix-blend-mode: darken;
+}
 
 @media screen and (max-width: 1280px) {
     #gallery-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    #warhammer-fig {
+        display: none;
     }
 }
 
@@ -135,5 +203,12 @@ video {
     }
     #gallery-grid img, #gallery-grid figcaption {
         transition: none;
+    }
+}
+
+@keyframes whoa {
+    30% {
+        transform: scale(1.7) translateY(-50%);
+        color: var(--complementcolor);
     }
 }
