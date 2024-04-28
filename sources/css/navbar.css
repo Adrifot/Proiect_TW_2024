@@ -114,24 +114,19 @@
 }
 @keyframes clip_menu {
   0% {
-    -webkit-clip-path: polygon(0 0, 0 0, 0 50%, 0 100%, 0 100%);
-            clip-path: polygon(0 0, 0 0, 0 50%, 0 100%, 0 100%);
+    clip-path: polygon(0 0, 0 0, 0 50%, 0 100%, 0 100%);
   }
   25% {
-    -webkit-clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 100%, 0 100%);
-            clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 100%, 0 100%);
+    clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 100%, 0 100%);
   }
   50% {
-    -webkit-clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 100%, 0 100%);
-            clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 100%, 0 100%);
+    clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 100%, 0 100%);
   }
   75% {
-    -webkit-clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
-            clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
+    clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
   }
   100% {
-    -webkit-clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
-            clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
   }
 }
 @media screen and (max-width: 1280px) {
@@ -161,8 +156,7 @@
     border-bottom: 2px solid var(--bgcolor);
   }
   .menu > li:hover {
-    -webkit-clip-path: none !important;
-            clip-path: none !important;
+    clip-path: none !important;
   }
   #navhome {
     display: none;
@@ -208,4 +202,4 @@
     position: absolute;
     width: 100%;
   }
-}/*# sourceMappingURL=navbar.css.map */
+}

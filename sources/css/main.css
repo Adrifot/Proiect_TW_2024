@@ -1,7 +1,11 @@
 .newstitle {
     color: var(--complementcolor2);
     padding-bottom: var(--txtpaddingsmall);
-    padding-top: var(--txtpadding);
+    /* padding-top: var(--txtpadding); */
+}
+
+#news article {
+    margin-bottom: var(--spacing);
 }
 
 #banner-small {
@@ -38,6 +42,10 @@
 
 .iframe-tabs a:hover {
     background-color: var(--complementcolordark);
+}
+
+table {
+    text-align: center;
 }
 
 video {
