@@ -1,6 +1,6 @@
 @charset "UTF-8";
 :root {
-  /* colors */
+  /* colors HEX*/
   --txtcolor: #FFFCFF;
   --bgcolor: #1B2F33;
   --complementcolor: #FFD23F;
@@ -12,6 +12,9 @@
   --complementcolordark: #CC9C00;
   --txtcolordark: #505050;
   --transparent: rgba(0, 0, 0, 0);
+  /* colors RGB */
+  --txtcolor_rgb: 255, 252, 255;
+  --bgcolor_rgb: 27, 47, 51;
   /* spacing */
   --spacing: 7.5%;
   --spacingsmall: 3.5%;
@@ -23,6 +26,11 @@
   margin: 0px;
   padding: 0px;
   box-sizing: content-box !important;
+}
+
+*::selection {
+  background-color: var(--complementcolor2);
+  color: var(--complementcolor);
 }
 
 html {
@@ -148,6 +156,14 @@ ul {
 }
 ul li {
   padding-left: var(--txtpaddingsmall);
+}
+
+.hr-custom {
+  border: none;
+  height: 8px;
+  background-image: linear-gradient(45deg, var(--complementcolor2) 25%, transparent 25%), linear-gradient(-45deg, var(--complementcolor2) 25%, transparent 25%), linear-gradient(45deg, transparent 75%, var(--complementcolor2) 75%), linear-gradient(-45deg, transparent 75%, var(--complementcolor2) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 0 4px, 4px -4px, -4px 0px;
 }
 
 #banner-small img {
