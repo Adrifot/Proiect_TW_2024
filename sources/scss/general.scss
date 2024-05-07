@@ -23,6 +23,14 @@
     --txtpaddingsmall: 0.5rem;
 }
 
+$bgcolor: var(--bgcolor);
+$padding-med: var(--txtpadding);
+$padding-small: var(--txtpaddingsmall);
+$yellow: var(--complementcolor);
+$yellowdark: var(--complementcolordark);
+$lightgreen: var(--complementcolor2);
+$white: var(--txtcolor);
+
 * {
     margin: 0px;
     padding: 0px;

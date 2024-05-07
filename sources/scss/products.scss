@@ -1,0 +1,71 @@
+$bgcolor: var(--bgcolor);
+$padding-med: var(--txtpadding);
+$padding-small: var(--txtpaddingsmall);
+$yellow: var(--complementcolor);
+$yellowdark: var(--complementcolordark);
+$lightgreen: var(--complementcolor2);
+$white: var(--txtcolor);
+$red: var(--highlightcolor);
+$darkred: var(--highlightcolordark);
+
+.prodfig img {
+    width: 50%;
+    height: auto;
+}
+
+.prods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1rem;
+    .product {
+        margin-bottom: 3rem; 
+        overflow: hidden;
+        position: relative;
+        h3 {
+            color: $yellow;
+            text-align: center;
+            margin-top: 0;
+            padding: 0.5rem 0.1rem;
+        }
+        a {
+            color: $white;
+        }
+        figure {
+            text-align: center;
+            img {
+                border: 1px solid black;
+            }
+        }
+        .prodinfo {
+            display: flex;
+            background-color: var(--complementcolor2dark);
+            margin-bottom: 0.5rem;
+            p {
+                width: 30%;
+                text-align: center;
+                font-weight: bold;
+            }
+        }
+
+    }
+}
+
+.select-cart {
+    display: inline-block;
+    background-color: $yellow;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    padding: 0.3rem;
+    border: 1px solid transparent;
+    &:hover {
+        background-color: $yellowdark;
+        border: 1px solid $red;
+    }
+}
+
+.ext {
+    font-style: italic;
+}

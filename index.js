@@ -9,7 +9,7 @@ const Client = require("pg").Client;
 
 var client = new Client({
     user: "adrian",
-    database: "cti_2024",
+    database: "bgshop",
     password: "admin",
     host: "localhost",
     port: 5432
@@ -17,11 +17,9 @@ var client = new Client({
 
 client.connect();
 
-client.query("select * from products;", function(err, rez) {
-    //console.log("Baza de date:\n");
-    if(err) console.log(err);
-    //console.log(rez);
-});
+// client.query("select * from unnest(enum_range(NULL::categorie))", (err, rez) => { //DE SCHIMBAT SI AICI
+//     console.log(rez);
+// }) 
 
 objGlobal = {
     objErr: null,
@@ -51,45 +49,62 @@ app.get(["/", "/index", "/home"], (req, res) => {
     res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images});
 });
 
-/*
-app.get("/produse", function(req, res){
-    client.query("select * from prajituri", function(err, rez){
-        if(err){
+app.get("/produse", (req, res) => {
+    client.query("select * from produse", (err, res2) => {
+        if(err) {
             console.log(err);
-            afisareEroare(res, 2);
+            throwError(res, 2);
+        } else {
+            res.render("pages/products", {products: res2.rows, options: []});
         }
-        else{
-            res.render("pages/produse", {produse: rez.rows, optiuni:[]} )
-        }
-        
-    })
-})
-
-
-app.get("/produs/:id", function(req, res){
-    client.query(`select * from prajituri where id=${req.params.id}`, function(err, rez){
-        if(err){
-            console.log(err);
-            afisareEroare(res, 2);
-        }
-        else{
-            res.render("pages/produs", {prod: rez.rows[0]} )
-        }
-        
-    })
-})
-*/
-
-app.get("/currdate", function(req, res) {
-    res.write("Current date: ");
-    res.write(Date());
-    res.end();
+    });
 });
 
-app.get("/mathsum/:a/:b", function(req, res) {
-    var suma = req.params.a*1 + req.params.b*1;
-    res.send(""+suma);
+app.get("/produs/:id", (req, res) => {
+    client.query(`select * from produse where id = ${req.params.id}`, (err, res2) => {
+        if(err) {
+            console.log(err);
+            throwError(res, 2);
+        } else {
+            res.render("pages/product", {product: res2.rows[0]});
+        }
+    });
 });
+
+// BUCATA DE COD DE LA CURS/LAB CU PRAJITURI AND STUFF
+
+// app.get("/produs/:id", function(req, res){
+//     client.query(`select * from prajituri where id=${req.params.id}`, function(err, rez){
+//         if(err){
+//             console.log(err);
+//             afisareEroare(res, 2);
+//         }
+//         else{
+//             res.render("pages/produs", {prod: rez.rows[0]});
+//         }
+//     });
+// });
+
+// app.get("/produse", function(req, res){
+//     console.log(req.query)
+//     var conditieQuery="";
+//     if (req.query.tip){
+//         conditieQuery=` where tip_produs='${req.query.tip}'`
+//     }
+//     client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezOptiuni){
+//         client.query(`select * from prajituri ${conditieQuery}`, function(err, rez){
+//             if (err){
+//                 console.log(err);
+//                 throwError(res, 2);
+//             }
+//             else{
+//                 res.render("pages/produse", {produse: rez.rows, optiuni: []});
+//             }
+//         })
+//     });
+// })
+// // CODE END
+
 
 app.get("/*.ejs", (req, res) => {
     throwError(res, 400);
@@ -112,7 +127,7 @@ app.get("/*", (req, res) => {
                     console.log("Page not found: ", req.url);
                 }
             }
-        })
+        });
     } catch(err1) {
         if(err1.message.startsWith("Cannot find module")) {
             throwError(res, 404);

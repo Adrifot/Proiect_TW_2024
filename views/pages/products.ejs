@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Produsele oferite de BG Shop sunt multe si variate. Gaisi aici jocuri de societate si figurine de la branduri precum Days of Wonder sau Gamewright.">
+    <meta name="keywords" content="BG Shop, jocuri de societate, magazin, produse, carti, figurine">
+    <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/sources/css/products.css">
+    <title>Produse</title>
+</head>
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <section id="prods">
+            <h2>Produse</h2>
+            <div class="prods-grid">
+                <% for(let prod of locals.products) { %>
+                    <article class="product">
+                        <h3 class="prodname"><a href="/produs/<%- prod.id %>"><span class="nameval"><%- prod.nume %></span></a></h3>
+                        <div class="prodinfo">
+                            <p class="price"><span class="priceval"><%- prod.pret %></span> RON</p>
+                            <p class="genre">Gen: <span class="genreval"><%- prod.gen %></span> </p>
+                            <% if(prod.nr_jucatori_min && prod.nr_jucatori_max) { %>
+                                <p class="players">Jucatori: <span class="playernrval"><%- prod.nr_jucatori_min %> - <%- prod.nr_jucatori_max %></span></p>
+                            <% } %>
+                            <% if(prod.extensie) { %>
+                                <p class="ext">Extensie</p>
+                            <% } %>
+                        </div>
+                        <figure class="prodfig">
+                            <a href="/product/<%- prod.id %>"><img src="/sources/images/products/<%- prod.imagine %>" alt="imagine <%- prod.nume %>"></a>
+                        </figure>
+                        <label class="select-cart">
+                            Adauga in cos: <br/>
+                            <input type="checkbox" class="input-select-cart", value="<%- prod.id %>" autocomplete="off">
+                        </label>
+                    </article>
+                <% } %>
+            </div>
+        </section>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>
