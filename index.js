@@ -17,10 +17,6 @@ var client = new Client({
 
 client.connect();
 
-// client.query("select * from unnest(enum_range(NULL::categorie))", (err, rez) => { //DE SCHIMBAT SI AICI
-//     console.log(rez);
-// }) 
-
 objGlobal = {
     objErr: null,
     objImg: null,
@@ -49,24 +45,32 @@ app.get(["/", "/index", "/home"], (req, res) => {
     res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images});
 });
 
+
+
+
 app.get("/produse", (req, res) => {
-    client.query("select * from produse", (err, res2) => {
-        if(err) {
-            console.log(err);
-            throwError(res, 2);
-        } else {
-            res.render("pages/products", {products: res2.rows, options: []});
-        }
+    var conditionQuery = "";
+    if(req.query.gen) conditionQuery = `where gen = '${req.query.gen}'`;
+    client.query("select * from unnest(enum_range(null::genre))", (err, optRes) => {
+        console.log(res);
+        client.query(`select * from produse ${conditionQuery}`, (err, DBres) => {
+            if(err) {
+                console.log(err);
+                throwError(res, 2);
+            } else {
+                res.render("pages/products", {products: DBres.rows, options: optRes.rows});
+            }
+        });
     });
 });
 
 app.get("/produs/:id", (req, res) => {
-    client.query(`select * from produse where id = ${req.params.id}`, (err, res2) => {
+    client.query(`select * from produse where id = ${req.params.id}`, (err, DBres) => {
         if(err) {
             console.log(err);
             throwError(res, 2);
         } else {
-            res.render("pages/product", {product: res2.rows[0]});
+            res.render("pages/product", {product: DBres.rows[0]});
         }
     });
 });
