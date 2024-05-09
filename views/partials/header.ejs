@@ -19,13 +19,11 @@
                 </ul>
             </li>
             <li> <span>Produse <i class="fa-solid fa-chevron-down"></i></span>
-                <ul> 
+                <ul>
                     <li><a href="/produse">Toate</a></li>
-                    <li><a href="/produse?gen=strategie">Jocuri de strategie</a></li>
-                    <li><a href="/produse?gen=petrecere">Jocuri de petrecere</a></li>
-                    <li><a href="/produse?gen=rpg">Jocuri RPG</a></li>
-                    <li><a href="/produse?gen=carti">Jocuri de Carti</a></li>
-                    <li><a href="/produse?gen=figurina">Figurine</a></li>
+                    <% for(let opt of options) { %>
+                        <li><a href="/produse?tip=<%- opt.unnest %>"><%- opt.unnest %></a></li>
+                    <% } %>
                 </ul>
             </li> 
             <li><a href=""><span>Contact</span></a></li> 
