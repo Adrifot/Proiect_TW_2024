@@ -24,7 +24,7 @@
             </div>
             <div class="input-pair">
                 <label for="price-inp">Pret maxim:</label>
-                <input type="range"> <span class="rangevalue">(0)</span>
+                <input type="range" value="1000" min="0" max="1000" step="50" id="price-inp"> <span id="rangevalue">(1000)</span>
             </div>
             <div class="input-pair">
                 <label for="brand-inp">Brand:</label>
@@ -51,9 +51,10 @@
                 </div>
             </div> 
             <div class="input-pair">
-                <label for="age-inp">Varsta minima: </label>
+                <label for="age-inp">Limita de varsta: </label>
                 <select name="age-inp" id="age-inp">
                     <option value="all" selected>Toate</option>
+                    <option value="6">6+</option>
                     <option value="8">8+</option>
                     <option value="10">10+</option>
                     <option value="12">12+</option>
@@ -64,18 +65,18 @@
             <div class="input-pair">
                 <label for="player-inp">Numarul de jucatori:</label>
                 <select name="player-inp" id="player-inp" multiple size="3">
+                    <option value="all" selected>Toate</option>
                     <option value="1-2">Solo & 1vs1</option>
-                    <option value="1-5">Solo & Grup mediu (maxim 5)</option>
                     <option value="2-5">1vs1 & Grup mediu (maxim 5)</option>
-                    <option value="2-8">1vs1 & Grup mare (maxim 8)</option>
-                    <option value="3">3 sau mai multi</option>
+                    <option value="2-8">Grup mare (maxim 8)</option>
+                    <option value="3-999">3 sau mai multi</option>
                 </select>
-                
             </div>
             <div class="input-pair">
-                <label for="new-checkbox">Noutati: </label>
-                <input type="checkbox" name="noutati" id="noutati">
+                <label for="check-new">Noutati: </label>
+                <input type="checkbox" name="check-new" id="check-new">
             </div>
+            <button id="filterbtn">Aplica filtrele</button>
         </div>
         
         <section id="prods">
@@ -84,7 +85,7 @@
                 <% for(let prod of locals.products) { %>
                     <article class="product" id="artc-<%- prod.id %>">
                         <div>
-                            <h3 class="prodname"><%- prod.nume %></h3>
+                            <h3 class="nameval"><%- prod.nume %></h3>
                             <figure class="prodfig">
                                 <a href="/produs/<%- prod.id %>"><img src="/sources/images/products/<%- prod.imagine %>" alt="imagine <%- prod.nume %>"></a>
                             </figure>
@@ -116,7 +117,7 @@
                         <div>
                             <p>Gen: <span class="genre"><%- prod.gen %></span></p>
                             <p>Tematica: <span class="theme"><%- prod.tematica %></span></p>
-                            <p>Varsta: <span class="age"><%- prod.varsta %>+</span></p>
+                            <p>Varsta: <span class="age"><%- prod.varsta %></span>+</p>
                             <p>Jucatori: <span class="playermin"><%- prod.nr_jucatori_min %></span> - <span class="playermax"><%- prod.nr_jucatori_max %></span></p>
                             <p class="desc"><%- prod.descriere %></p>
                         </div>
