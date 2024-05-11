@@ -77,6 +77,10 @@
                 <input type="checkbox" name="check-new" id="check-new">
             </div>
             <button id="filterbtn">Aplica filtrele</button>
+            <button id="reset-btn">Reseteaza filtrele</button>
+            <button id="sort-asc">Sorteaza Ascendent</button>
+            <button id="sort-desc">Sorteaza Descendent</button>
+            <button id="calc-btn">Calculeaza pret</button>
         </div>
         
         <section id="prods">
@@ -113,6 +117,10 @@
                                     <span class="ext"> NU</span>
                                 <% } %>
                             </p>
+                            <label class="select-cart">
+                                Adauga in Cos:<br/>
+                                <input type="checkbox" class="cart-checkbox" value="<%-prod.id %>" autocomplete="off">
+                            </label>
                         </div>
                         <div>
                             <p>Gen: <span class="genre"><%- prod.gen %></span></p>

@@ -51,9 +51,8 @@
 .select-cart {
   display: inline-block;
   background-color: var(--complementcolor);
-  position: absolute;
-  bottom: 0.5rem;
-  right: 0.5rem;
+  width: 50%;
+  margin: 0.5rem;
   border-radius: 0.5rem;
   text-align: center;
   padding: 0.3rem;

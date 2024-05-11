@@ -1,6 +1,8 @@
 window.addEventListener("load", () => {
     const filterBtn = document.getElementById("filterbtn");
 
+    let products = document.getElementsByClassName("product");
+
     const priceRange = document.getElementById("price-inp");
     priceRange.onchange = function() {
         document.getElementById("rangevalue").innerHTML = `(${this.value})`;
@@ -46,11 +48,10 @@ window.addEventListener("load", () => {
 
         let currDate = new Date();
 
-        let products = document.getElementsByClassName("product");
         for(let product of products) {
             let nameVal = product.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
             let keywords = product.getElementsByClassName("keywords")[0].innerHTML.toLowerCase().trim();
-            let priceVal = parseInt(product.getElementsByClassName("price")[0].innerHTML);
+            let priceVal = parseFloat(product.getElementsByClassName("price")[0].innerHTML);
             let brandVal = product.getElementsByClassName("brand")[0].innerHTML.toLowerCase().trim();
             let themeVal = product.getElementsByClassName("theme")[0].innerHTML.trim();
             let ageVal = parseInt(product.getElementsByClassName("age")[0].innerHTML.trim());
@@ -76,5 +77,37 @@ window.addEventListener("load", () => {
             if(conditions.every(condition => condition)) product.style.display = "grid";
             else product.style.display = "none";
         }
+    }//filter button
+
+
+    const sortBtnAsc = document.getElementById("sort-asc");
+    const sortBtnDesc = document.getElementById("sort-desc");
+
+    sortBtnAsc.onclick = function() {
+        sortElems(1);
     }
-});
+    sortBtnDesc.onclick = function() {
+        sortElems(-1);
+    }
+
+    function sortElems(sign) {
+        let productArr = Array.from(products);
+        productArr.sort((a, b) => {
+            let priceValA = parseInt(a.getElementsByClassName("price")[0].innerHTML);
+            let priceValB = parseInt(b.getElementsByClassName("price")[0].innerHTML);
+            if(priceValA == priceValB) {
+                let nameValA = a.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
+                let nameValB = b.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
+                return sign * nameValA.localeCompare(nameValB);
+            }
+            return sign*(priceValA - priceValB);
+        });
+        for(let product of productArr) {
+            product.parentNode.appendChild(product);
+        }
+    }
+    // DE SCHIMBAT SORTAREA DUPA CERINTELE SPECIFICE
+    //DE ADAUGAT FUNCTIA DE CALCUL A SUMEI PENTRU PRODUSELE SELECTATE
+    //DE FACUT FUNCTIA DE RESET
+}); 
+
