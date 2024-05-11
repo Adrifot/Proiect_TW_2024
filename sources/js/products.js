@@ -70,7 +70,7 @@ window.addEventListener("load", () => {
             let cond5 = (inpRadio == "all")? true : (inpRadio == themeVal);
             let cond6 = (ageInputVal == "all")? true : (parseInt(ageInputVal) > ageVal);
             let cond7 = selectAll || ((playerMinVal >= minPlayersNr) && (playerMaxVal <=  maxPlayersNr));
-            let cond8 = (!checkNewInp ? true : (Math.abs(currDate - isodate) / (1000*60*60*24)) <= 10); //NO PRODUCTS ARE SHOWN AT ALL!!!!
+            let cond8 = (!checkNewInp ? true : (Math.abs(currDate - isodate) / (1000*60*60*24)) <= 10); 
             console.log(Math.abs(currDate - isodate) / (1000*60*60*24));
             let conditions = [cond1, cond2, cond3, cond4, cond5, cond6, cond7, cond8];
             if(conditions.every(condition => condition)) product.style.display = "grid";
