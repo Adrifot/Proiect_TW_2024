@@ -2,6 +2,7 @@ node_modules/
 temp/
 backup/
 *.sql
+*.txt
 sources/css/produs.css
 sources/css/produse.css
 views/pages/produs.ejs

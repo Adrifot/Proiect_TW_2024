@@ -18,6 +18,10 @@ $darkred: var(--highlightcolordark);
     grid-template-columns: 1fr 1fr;
     grid-gap: 1rem;
     .product {
+        border: 2px solid black;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 0.5rem;
         margin-bottom: 3rem; 
         overflow: hidden;
         position: relative;
@@ -35,6 +39,12 @@ $darkred: var(--highlightcolordark);
             img {
                 border: 1px solid black;
             }
+        }
+        div {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            // align-items: center;
         }
         .prodinfo {
             display: flex;
@@ -66,6 +76,12 @@ $darkred: var(--highlightcolordark);
     }
 }
 
-.ext {
-    font-style: italic;
+.input-pair {
+    display: block;
+    margin-bottom: var(--txtpadding);
+}
+
+.radio-pair {
+    display: inline-block;
+    margin-right: 1em;
 }

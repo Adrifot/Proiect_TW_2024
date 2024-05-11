@@ -9,6 +9,10 @@
   grid-gap: 1rem;
 }
 .prods-grid .product {
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 0.5rem;
   margin-bottom: 3rem;
   overflow: hidden;
   position: relative;
@@ -27,6 +31,11 @@
 }
 .prods-grid .product figure img {
   border: 1px solid black;
+}
+.prods-grid .product div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 .prods-grid .product .prodinfo {
   display: flex;
@@ -55,6 +64,12 @@
   border: 1px solid var(--highlightcolor);
 }
 
-.ext {
-  font-style: italic;
+.input-pair {
+  display: block;
+  margin-bottom: var(--txtpadding);
+}
+
+.radio-pair {
+  display: inline-block;
+  margin-right: 1em;
 }

@@ -7,34 +7,119 @@
     <meta name="keywords" content="BG Shop, jocuri de societate, magazin, produse, carti, figurine">
     <%- include("../partials/head") %>
     <link rel="stylesheet" href="/sources/css/products.css">
+    <script type="text/javascript" src="sources/js/products.js"></script>
     <title>Produse</title>
 </head>
 <body>
     <%- include("../partials/header") %>
     <main>
+        <div id="filter-inputs">
+            <div class="input-pair">
+                <label for="name-inp">Numele produsului:</label><br>
+                <textarea name="name-inp" id="name-inp" rows="1" cols="20"></textarea>
+            </div>
+            <div class="input-pair">
+                <label for="keywords-inp">Cuvant cheie:</label>
+                <input type="text" id="keywords-inp" placeholder="De ex. 'medieval'">
+            </div>
+            <div class="input-pair">
+                <label for="price-inp">Pret maxim:</label>
+                <input type="range"> <span class="rangevalue">(0)</span>
+            </div>
+            <div class="input-pair">
+                <label for="brand-inp">Brand:</label>
+                <input list="brand-list" id="brand-inp" name="brand-inp">
+                <datalist id="brand-list">
+                    <% for(let brand of locals.brands) { %>
+                        <option value="<%- brand.unnest %>"></option>
+                    <% } %>
+                </datalist>  
+            </div>
+            <div class="input-pair">
+                <label for="theme-inp">Tematica:</label><br>
+                <div id="theme-inp">
+                    <div class="radio-pair">
+                        <label for="radio-all">Toate</label>
+                        <input type="radio" name="theme-radio" value="all" checked>
+                    </div>
+                    <% for(let theme of locals.themes) { %>
+                        <div class="radio-pair">
+                            <label for="<%- theme.unnest %>"><%- theme.unnest %></label>
+                            <input type="radio" name="theme-radio" value="<%- theme.unnest %>" id="<%- theme.unnest %>">
+                        </div>
+                    <% } %>
+                </div>
+            </div> 
+            <div class="input-pair">
+                <label for="age-inp">Varsta minima: </label>
+                <select name="age-inp" id="age-inp">
+                    <option value="all" selected>Toate</option>
+                    <option value="8">8+</option>
+                    <option value="10">10+</option>
+                    <option value="12">12+</option>
+                    <option value="14">14+</option>
+                    <option value="16">16+</option>
+                </select>
+            </div>
+            <div class="input-pair">
+                <label for="player-inp">Numarul de jucatori:</label>
+                <select name="player-inp" id="player-inp" multiple size="3">
+                    <option value="1-2">Solo & 1vs1</option>
+                    <option value="1-5">Solo & Grup mediu (maxim 5)</option>
+                    <option value="2-5">1vs1 & Grup mediu (maxim 5)</option>
+                    <option value="2-8">1vs1 & Grup mare (maxim 8)</option>
+                    <option value="3">3 sau mai multi</option>
+                </select>
+                
+            </div>
+            <div class="input-pair">
+                <label for="new-checkbox">Noutati: </label>
+                <input type="checkbox" name="noutati" id="noutati">
+            </div>
+        </div>
+        
         <section id="prods">
-            <h2>Produse</h2>
+            <h2>Produsele noastre</h2>
             <div class="prods-grid">
                 <% for(let prod of locals.products) { %>
-                    <article class="product">
-                        <h3 class="prodname"><a href="/produs/<%- prod.id %>"><span class="nameval"><%- prod.nume %></span></a></h3>
-                        <div class="prodinfo">
-                            <p class="price"><span class="priceval"><%- prod.pret %></span> RON</p>
-                            <p class="genre">Gen: <span class="genreval"><%- prod.gen %></span> </p>
-                            <% if(prod.nr_jucatori_min && prod.nr_jucatori_max) { %>
-                                <p class="players">Jucatori: <span class="playernrval"><%- prod.nr_jucatori_min %> - <%- prod.nr_jucatori_max %></span></p>
-                            <% } %>
-                            <% if(prod.extensie) { %>
-                                <p class="ext">Extensie</p>
-                            <% } %>
+                    <article class="product" id="artc-<%- prod.id %>">
+                        <div>
+                            <h3 class="prodname"><%- prod.nume %></h3>
+                            <figure class="prodfig">
+                                <a href="/produs/<%- prod.id %>"><img src="/sources/images/products/<%- prod.imagine %>" alt="imagine <%- prod.nume %>"></a>
+                            </figure>
+                            <p>Pret: <span class="price"><%- prod.pret %></span> RON</p>
+                            <p>Brand: <span class="brand"><%- prod.brand %></span></p>
+                            <p>Cuvinte cheie: <span class="keywords"><%- prod.cuvinte_cheie %></span></p>
+                            <% 
+                                const weekdaysRO = ["Duminica", "Luni", "Marti", "Miercuri", "Joi", "Vineri", "Sambata"];
+                                const monthsRO = ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie", "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"];
+
+                                let dbDate = new Date(prod.data_adaugare);
+
+                                let dayOfWeek = weekdaysRO[dbDate.getDay()];
+                                let dayOfmonth = dbDate.getDate();
+                                let month = monthsRO[dbDate.getMonth()];
+                                let year = dbDate.getFullYear();
+
+                                let dateFormat = dayOfWeek + ", " + dayOfmonth + " " + month + " " + year;
+                            %>
+                            <p>Data adaugare: <time class="add-date"><%- dateFormat %></time></p>
+                            <p>Extensie: 
+                                <% if(prod.extensie) { %>
+                                    <span class="ext"> DA</span>
+                                <% } else { %>
+                                    <span class="ext"> NU</span>
+                                <% } %>
+                            </p>
                         </div>
-                        <figure class="prodfig">
-                            <a href="/product/<%- prod.id %>"><img src="/sources/images/products/<%- prod.imagine %>" alt="imagine <%- prod.nume %>"></a>
-                        </figure>
-                        <label class="select-cart">
-                            Adauga in cos: <br/>
-                            <input type="checkbox" class="input-select-cart", value="<%- prod.id %>" autocomplete="off">
-                        </label>
+                        <div>
+                            <p>Gen: <span class="genre"><%- prod.gen %></span></p>
+                            <p>Tematica: <span class="theme"><%- prod.tematica %></span></p>
+                            <p>Varsta: <span class="age"><%- prod.varsta %>+</span></p>
+                            <p>Jucatori: <span class="playermin"><%- prod.nr_jucatori_min %></span> - <span class="playermax"><%- prod.nr_jucatori_max %></span></p>
+                            <p class="desc"><%- prod.descriere %></p>
+                        </div>
                     </article>
                 <% } %>
             </div>

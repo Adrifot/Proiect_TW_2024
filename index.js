@@ -45,21 +45,24 @@ app.get(["/", "/index", "/home"], (req, res) => {
     res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images});
 });
 
-
-
-
 app.get("/produse", (req, res) => {
     var conditionQuery = "";
     if(req.query.gen) conditionQuery = `where gen = '${req.query.gen}'`;
-    client.query("select * from unnest(enum_range(null::genre))", (err, optRes) => {
-        console.log(res);
-        client.query(`select * from produse ${conditionQuery}`, (err, DBres) => {
-            if(err) {
-                console.log(err);
-                throwError(res, 2);
-            } else {
-                res.render("pages/products", {products: DBres.rows, options: optRes.rows});
-            }
+    client.query("select * from unnest(enum_range(null::genre))", (err, genres) => {
+        if(err) console.log(err);
+        client.query("select * from unnest(enum_range(null::theme))", (err2, themes) => {
+            if(err2) console.log(err2);
+            client.query("select * from unnest(enum_range(null::brand))", (err3, brands) => {
+                if(err3) console.log(err3);
+                client.query(`select * from produse ${conditionQuery}`, (dberr, dbres) => {
+                    if(dberr) {
+                        console.log(dberr);
+                        throwError(dbres, 2);
+                    } else {
+                        res.render("pages/products", {products: dbres.rows, genres: genres.rows, themes: themes.rows, brands: brands.rows});
+                    }
+                });
+            });
         });
     });
 });
