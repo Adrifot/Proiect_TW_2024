@@ -1,5 +1,8 @@
+const newItemsPeriodDayLimit = 10;
+
 window.addEventListener("load", () => {
     const filterBtn = document.getElementById("filterbtn");
+    const resetBtn = document.getElementById("reset-btn");
 
     let products = document.getElementsByClassName("product");
 
@@ -69,10 +72,9 @@ window.addEventListener("load", () => {
             let cond3 = priceVal <= inpPriceVal;
             let cond4 = inpBrandVal ? (brandVal == inpBrandVal) : true;
             let cond5 = (inpRadio == "all")? true : (inpRadio == themeVal);
-            let cond6 = (ageInputVal == "all")? true : (parseInt(ageInputVal) > ageVal);
+            let cond6 = (ageInputVal == "all")? true : (parseInt(ageInputVal) <= ageVal);
             let cond7 = selectAll || ((playerMinVal >= minPlayersNr) && (playerMaxVal <=  maxPlayersNr));
-            let cond8 = (!checkNewInp ? true : (Math.abs(currDate - isodate) / (1000*60*60*24)) <= 10); 
-            console.log(Math.abs(currDate - isodate) / (1000*60*60*24));
+            let cond8 = (!checkNewInp ? true : (Math.abs(currDate - isodate) / (1000*60*60*24)) <= newItemsPeriodDayLimit); 
             let conditions = [cond1, cond2, cond3, cond4, cond5, cond6, cond7, cond8];
             if(conditions.every(condition => condition)) product.style.display = "grid";
             else product.style.display = "none";
@@ -90,24 +92,37 @@ window.addEventListener("load", () => {
         sortElems(-1);
     }
 
-    function sortElems(sign) {
-        let productArr = Array.from(products);
-        productArr.sort((a, b) => {
-            let priceValA = parseInt(a.getElementsByClassName("price")[0].innerHTML);
-            let priceValB = parseInt(b.getElementsByClassName("price")[0].innerHTML);
-            if(priceValA == priceValB) {
-                let nameValA = a.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
-                let nameValB = b.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
-                return sign * nameValA.localeCompare(nameValB);
-            }
-            return sign*(priceValA - priceValB);
+    function sortElems(order) {
+        let productsArr = Array.from(products);
+        productsArr.sort((a, b) => {
+            let nameValA = a.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
+            let nameValB = b.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
+            if(nameValA.localeCompare(nameValB) == 0) {
+                let priceValA = parseInt(a.getElementsByClassName("price")[0].innerHTML);
+                let priceValB = parseInt(b.getElementsByClassName("price")[0].innerHTML);
+                return order * (priceValA - priceValB);
+            } else return order * nameValA.localeCompare(nameValB);
         });
-        for(let product of productArr) {
-            product.parentNode.appendChild(product);
-        }
+        for(let product of productsArr) product.parentNode.appendChild(product);
+    } 
+
+
+    resetBtn.onclick = function() {
+        if(confirm("Sunteti siguri ca vreti sa resetati toate filtrele?")) {
+            document.getElementById("name-inp").value = "";
+            document.getElementById("keywords-inp").value = "";
+            priceRange.value = priceRange.max;
+            document.getElementById("brand-inp").value = "";
+            document.getElementById("age-inp").selectedIndex = 0;
+            document.getElementById("player-inp").selectedIndex = 0;
+            document.getElementsByName("theme-radio")[0].checked = true;
+            document.getElementById("check-new").checked = false;
+            for(let product of products) {
+                product.style.display = "grid";
+                product.parentNode.appendChild(product);
+            } 
+        } else return;
     }
-    // DE SCHIMBAT SORTAREA DUPA CERINTELE SPECIFICE
     //DE ADAUGAT FUNCTIA DE CALCUL A SUMEI PENTRU PRODUSELE SELECTATE
-    //DE FACUT FUNCTIA DE RESET
 }); 
 
