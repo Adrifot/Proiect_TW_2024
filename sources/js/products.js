@@ -114,6 +114,7 @@ window.addEventListener("load", () => {
             document.getElementById("name-inp").value = "";
             document.getElementById("keywords-inp").value = "";
             priceRange.value = priceRange.max;
+            document.getElementById("rangevalue").innerHTML = 1000;
             document.getElementById("brand-inp").value = "";
             document.getElementById("age-inp").selectedIndex = 0;
             document.getElementById("player-inp").selectedIndex = 0;

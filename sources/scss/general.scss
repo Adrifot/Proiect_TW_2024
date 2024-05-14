@@ -226,3 +226,23 @@ ul {
 #foot-banner, #watermark {
     display: none;
 }
+
+body.dark-theme {
+    /* colors HEX*/
+    --txtcolor: #FFEBFF;
+    --bgcolor: #070C0D;
+    --complementcolor: #655A7C;
+    --highlightcolor: #990B14;
+    --highlightcolordark: #72080F;
+    --complementcolor2: #4EA699;
+    --bgcolorlight: #233C43;
+    --complementcolor2dark: #346F66;
+    --complementcolordark: #4D455F;
+    --txtcolordark: #7A7A7A;
+    --transparent: rgba(0, 0, 0, 0);
+
+    /* colors RGB */
+    --txtcolor_rgb: 255, 235, 255;
+    --bgcolor_rgb: 7, 12, 13;
+    --yellow_rgb: 101, 90, 124;
+}
