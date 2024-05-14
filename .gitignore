@@ -7,3 +7,7 @@ sources/css/produs.css
 sources/css/produse.css
 views/pages/produs.ejs
 views/pages/produse.ejs
+views/pages/inregistrare.ejs
+views/pages/logout.ejs
+modules/
+views/partials/formular.ejs

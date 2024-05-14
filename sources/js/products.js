@@ -3,8 +3,10 @@ const newItemsPeriodDayLimit = 10;
 window.addEventListener("load", () => {
     const filterBtn = document.getElementById("filterbtn");
     const resetBtn = document.getElementById("reset-btn");
+    const calcBtn = document.getElementById("calc-btn");
 
     let products = document.getElementsByClassName("product");
+    let initialProducts = Array.from(document.getElementsByClassName("product"));
 
     const priceRange = document.getElementById("price-inp");
     priceRange.onchange = function() {
@@ -117,12 +119,36 @@ window.addEventListener("load", () => {
             document.getElementById("player-inp").selectedIndex = 0;
             document.getElementsByName("theme-radio")[0].checked = true;
             document.getElementById("check-new").checked = false;
-            for(let product of products) {
-                product.style.display = "grid";
+            for(let product of initialProducts) {
                 product.parentNode.appendChild(product);
+                product.style.display = "grid";
             } 
         } else return;
     }
-    //DE ADAUGAT FUNCTIA DE CALCUL A SUMEI PENTRU PRODUSELE SELECTATE
+    
+    
+    
+    calcBtn.onclick = function() {
+        let totalPrice = 0;
+        console.log("Displayul este:");
+        for(let product of products) {
+            console.log(product.style.display);
+            if(product.style.display != "none") {
+                let checkSelected = product.getElementsByClassName("cart-checkbox")[0].checked;
+                if(checkSelected) totalPrice += parseFloat(product.getElementsByClassName("price")[0].innerHTML);
+            }
+        }
+        if(totalPrice > 0) {
+            const newDiv = document.createElement("div");
+            newDiv.classList.add("calcdiv");
+            const newP = document.createElement("p");
+            newP.innerHTML = `Pretul total al produselor selectate este <span>${totalPrice}</span> RON.`;
+            document.body.appendChild(newDiv);
+            newDiv.appendChild(newP);
+            setTimeout(() => {
+                newDiv.remove();
+            }, 2000);
+        } else alert ("Niciun produs nu a fost selectat!");
+    }
 }); 
 
