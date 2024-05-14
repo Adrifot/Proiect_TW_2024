@@ -126,8 +126,6 @@ window.addEventListener("load", () => {
         } else return;
     }
     
-    
-    
     calcBtn.onclick = function() {
         let totalPrice = 0;
         console.log("Displayul este:");
