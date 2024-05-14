@@ -11,4 +11,4 @@
 
 **Etapa 5** - finalizata pe 22/04/2024.
 
-**Etapa 6** - work in progress...
+**Etapa 6** - finalizata pe 14/05/2024.
