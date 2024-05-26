@@ -3,7 +3,15 @@ const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 const sass = require('sass'); 
-//const ejs = require('ejs');
+const ejs = require('ejs');
+
+const app = express();
+
+const AccesBD= require("./modules/accesbd.js");
+const formidable=require("formidable");
+const {Utilizator}=require("./modules/utilizator.js")
+const session=require('express-session');
+const Drepturi = require("./modules/drepturi.js");
 
 const Client = require("pg").Client;
 
@@ -25,13 +33,12 @@ objGlobal = {
     backupFolder: path.join(__dirname, "backup")
 }
 
-folders = ["temp", "backup"];
+folders = ["temp", "backup", "uploads"];
 for(let folder of folders) {
     let folderPath = path.join(__dirname, folder);
     if(!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
 }
 
-const app = express();
 console.log("Project folder: ", __dirname);
 console.log("File path: ", __filename);
 console.log("Working directory: ", process.cwd());
@@ -77,41 +84,6 @@ app.get("/produs/:id", (req, res) => {
         }
     });
 });
-
-// BUCATA DE COD DE LA CURS/LAB CU PRAJITURI AND STUFF
-
-// app.get("/produs/:id", function(req, res){
-//     client.query(`select * from prajituri where id=${req.params.id}`, function(err, rez){
-//         if(err){
-//             console.log(err);
-//             afisareEroare(res, 2);
-//         }
-//         else{
-//             res.render("pages/produs", {prod: rez.rows[0]});
-//         }
-//     });
-// });
-
-// app.get("/produse", function(req, res){
-//     console.log(req.query)
-//     var conditieQuery="";
-//     if (req.query.tip){
-//         conditieQuery=` where tip_produs='${req.query.tip}'`
-//     }
-//     client.query("select * from unnest(enum_range(null::categ_prajitura))", function(err, rezOptiuni){
-//         client.query(`select * from prajituri ${conditieQuery}`, function(err, rez){
-//             if (err){
-//                 console.log(err);
-//                 throwError(res, 2);
-//             }
-//             else{
-//                 res.render("pages/produse", {produse: rez.rows, optiuni: []});
-//             }
-//         })
-//     });
-// })
-// // CODE END
-
 
 app.get("/*.ejs", (req, res) => {
     throwError(res, 400);
@@ -224,6 +196,98 @@ function initImg() {
         image.filename = path.join("/", objGlobal.objImg.galleryPath, image.filename);
     }
 }
+
+
+//COD LABORATOR START
+app.use(session({ // aici se creeaza proprietatea session a requestului (pot folosi req.session)
+    secret: 'abcdefg',//folosit de express session pentru criptarea id-ului de sesiune
+    resave: true,
+    saveUninitialized: false
+  }));
+
+  app.post("/inregistrare",function(req, res){
+    var username;
+    var poza;
+    var formular= new formidable.IncomingForm()
+    formular.parse(req, function(err, campuriText, campuriFisier ){//4
+        console.log("Inregistrare:",campuriText);
+
+
+        console.log(campuriFisier);
+        console.log(poza, username);
+        var eroare="";
+
+
+        // TO DO var utilizNou = creare utilizator
+        var utilizNou = new Utilizator();
+        try{
+            utilizNou.setareNume=campuriText.nume;
+            utilizNou.setareUsername=campuriText.username;
+            utilizNou.email=campuriText.email
+            utilizNou.prenume=campuriText.prenume
+           
+            utilizNou.parola=campuriText.parola;
+            utilizNou.culoare_chat=campuriText.culoare_chat;
+            utilizNou.poza= poza;
+            Utilizator.getUtilizDupaUsername(campuriText.username, {}, function(u, parametru ,eroareUser ){
+                if (eroareUser==-1){//nu exista username-ul in BD
+                    //TO DO salveaza utilizator
+                    utilizNou.salvareUtilizator
+                }
+                else{
+                    eroare+="Mai exista username-ul";
+                }
+
+
+                if(!eroare){
+                    res.render("pagini/inregistrare", {raspuns:"Inregistrare cu succes!"})
+                   
+                }
+                else
+                    res.render("pagini/inregistrare", {err: "Eroare: "+eroare});
+            })
+           
+
+
+        }
+        catch(e){
+            console.log(e);
+            eroare+= "Eroare site; reveniti mai tarziu";
+            console.log(eroare);
+            res.render("pagini/inregistrare", {err: "Eroare: "+eroare})
+        }
+
+    });
+    formular.on("field", function(nume,val){  // 1
+   
+        console.log(`--- ${nume}=${val}`);
+       
+        if(nume=="username")
+            username=val;
+    })
+    formular.on("fileBegin", function(nume,fisier){ //2
+        console.log("fileBegin");
+       
+        console.log(nume,fisier);
+        //TO DO adaugam folderul poze_uploadate ca static si sa fie creat de aplicatie
+        
+        //TO DO in folderul poze_uploadate facem folder cu numele utilizatorului (variabila folderUser)
+        var folderUser;
+       
+        fisier.filepath=path.join(folderUser, fisier.originalFilename)
+        poza=fisier.originalFilename;
+        //fisier.filepath=folderUser+"/"+fisier.originalFilename
+        console.log("fileBegin:",poza)
+        console.log("fileBegin, fisier:",fisier)
+
+
+    })    
+    formular.on("file", function(nume,fisier){//3
+        console.log("file");
+        console.log(nume,fisier); 
+    });
+});
+//COD DE LABORATOR END
 
 initImg();
 initErr();
