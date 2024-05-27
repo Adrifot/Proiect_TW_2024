@@ -138,7 +138,6 @@
     align-items: center;
     justify-content: space-around;
     display: none;
-    background-color: var(--bgcolor);
   }
   .menu > * {
     margin-bottom: var(--txtpaddingsmall);
@@ -187,19 +186,7 @@
   nav label {
     display: inline-block;
   }
-  .menu:nth-child(1) {
-    position: absolute;
-    width: 100%;
-  }
-  .menu:nth-child(2) {
-    position: absolute;
-    width: 100%;
-  }
-  .menu:nth-child(3) {
-    position: absolute;
-    width: 100%;
-  }
-  .menu:nth-child(4) {
+  .menu {
     position: absolute;
     width: 100%;
   }

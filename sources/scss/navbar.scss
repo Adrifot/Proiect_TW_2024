@@ -153,7 +153,7 @@ $nrnav: 4;
         align-items: center;
         justify-content: space-around;
         display: none;
-        background-color: $bgcolor;
+        //background-color: $bgcolor;
         &>* {
             margin-bottom: $padding-small;
         }
@@ -202,10 +202,8 @@ $nrnav: 4;
     nav label {
         display: inline-block;
     }
-    @for $i from 1 through $nrnav {
-        .menu:nth-child(#{$i}) {
-            position: absolute;
-            width: 100%;
-        }
+    .menu {
+        position: absolute;
+        width: 100%;
     }
 }
