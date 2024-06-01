@@ -63,6 +63,7 @@ table caption {
 
 table {
     border-spacing: 3px;
+    border-collapse: separate;
 }
 
 .mention {
