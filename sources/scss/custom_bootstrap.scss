@@ -8,7 +8,9 @@
     $success: #729EA1,
     $danger: #BF0D19,
 
-    $border-radius: 25%,
+    $border-radius: 0.5em,
+    $border-width: 1px,
+    $border-color: black,
 
     $font-family-base: "Lato",
 
@@ -21,5 +23,9 @@
     $h6-font-size: 1.1rem,
 
     $spacer: 0,
-);
 
+    $form-floating-height: 1.5rem,
+
+    $form-range-track-bg: white,
+    $form-range-thumb-width: 1.5rem
+);

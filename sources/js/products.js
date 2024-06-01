@@ -1,4 +1,7 @@
+//const { name } = require("ejs");
+
 const newItemsPeriodDayLimit = 10;
+const specialChars = /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
 
 window.addEventListener("load", () => {
     const filterBtn = document.getElementById("filterbtn");
@@ -13,8 +16,20 @@ window.addEventListener("load", () => {
         document.getElementById("rangevalue").innerHTML = `(${this.value})`;
     }
 
+    const nameInput = document.getElementById("name-inp");
+    nameInput.oninput = function() {
+        if(specialChars.test(nameInput.value.toLowerCase().trim())) {
+            nameInput.classList.add("is-invalid");
+            document.getElementById("name-inp-label").innerHTML = "Input invalid";
+        } 
+        else {
+            nameInput.classList.remove("is-invalid");
+            document.getElementById("name-inp-label").innerHTML = "Numele produsului";
+        }
+    }
+
     filterBtn.onclick = function() {
-        let nameInputVal = document.getElementById("name-inp").value.toLowerCase().trim();
+        let nameInputVal = nameInput.value.toLowerCase().trim();
         let keywordInputVal = document.getElementById("keywords-inp").value.toLowerCase().trim();
         let inpPriceVal = parseInt(priceRange.value);
         let inpBrandVal = document.getElementById("brand-inp").value.toLowerCase().trim();
@@ -114,7 +129,7 @@ window.addEventListener("load", () => {
             document.getElementById("name-inp").value = "";
             document.getElementById("keywords-inp").value = "";
             priceRange.value = priceRange.max;
-            document.getElementById("rangevalue").innerHTML = 1000;
+            document.getElementById("rangevalue").innerHTML = "(1000)";
             document.getElementById("brand-inp").value = "";
             document.getElementById("age-inp").selectedIndex = 0;
             document.getElementById("player-inp").selectedIndex = 0;

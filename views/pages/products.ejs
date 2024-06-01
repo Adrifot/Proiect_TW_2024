@@ -9,62 +9,75 @@
     <link rel="stylesheet" href="/sources/css/products.css">
     <script type="text/javascript" src="sources/js/products.js"></script>
     <title>Produse</title>
+    <style>
+        
+        @media (max-width: 1300px) {
+            .btn .btn-text {
+                display: none;
+            }
+        }
+    
+    </style>
 </head>
 <body>
     <%- include("../partials/header") %>
     <main>
-        <div id="filter-inputs">
-            <div class="input-pair">
-                <label for="name-inp">Numele produsului:</label><br>
-                <textarea name="name-inp" id="name-inp" rows="1" cols="20"></textarea>
+        <div id="filter-inputs container-fluid">
+            <div class="input-pair form-floating row">
+                <textarea name="name-inp" id="name-inp" class="form-control" placeholder="Scrieti numele produsului"></textarea>
+                <label for="name-inp" id="name-inp-label">Numele produsului</label>
             </div>
-            <div class="input-pair">
-                <label for="keywords-inp">Cuvant cheie:</label>
-                <input type="text" id="keywords-inp" placeholder="De ex. 'medieval'">
-            </div>
-            <div class="input-pair">
-                <label for="price-inp">Pret maxim:</label>
-                <input type="range" value="1000" min="0" max="1000" step="50" id="price-inp"> <span id="rangevalue">(1000)</span>
-            </div>
-            <div class="input-pair">
-                <label for="brand-inp">Brand:</label>
-                <input list="brand-list" id="brand-inp" name="brand-inp">
-                <datalist id="brand-list">
-                    <% for(let brand of locals.brands) { %>
-                        <option value="<%- brand.unnest %>"></option>
-                    <% } %>
-                </datalist>  
-            </div>
-            <div class="input-pair">
-                <label for="theme-inp">Tematica:</label><br>
-                <div id="theme-inp">
-                    <div class="radio-pair">
-                        <label for="radio-all">Toate</label>
-                        <input type="radio" name="theme-radio" value="all" checked>
-                    </div>
-                    <% for(let theme of locals.themes) { %>
-                        <div class="radio-pair">
-                            <label for="<%- theme.unnest %>"><%- theme.unnest %></label>
-                            <input type="radio" name="theme-radio" value="<%- theme.unnest %>" id="<%- theme.unnest %>">
-                        </div>
-                    <% } %>
+            <div class="row">
+                <div class="input-pair col-md">
+                    <label for="keywords-inp">Cuvant cheie:</label>
+                    <input type="text" id="keywords-inp" placeholder="De ex. 'medieval'" class="inp-round">
                 </div>
-            </div> 
-            <div class="input-pair">
-                <label for="age-inp">Limita de varsta: </label>
-                <select name="age-inp" id="age-inp">
-                    <option value="all" selected>Toate</option>
-                    <option value="6">6+</option>
-                    <option value="8">8+</option>
-                    <option value="10">10+</option>
-                    <option value="12">12+</option>
-                    <option value="14">14+</option>
-                    <option value="16">16+</option>
-                </select>
+                <div class="input-pair col-md">
+                    <label for="price-inp">Pret maxim:</label>
+                    <input type="range" value="1000" min="0" max="1000" step="50" id="price-inp" class="form-range"> <span id="rangevalue">(1000)</span>
+                </div>
+                <div class="input-pair col-md">
+                    <label for="brand-inp">Brand:</label>
+                    <input list="brand-list" id="brand-inp" name="brand-inp" class="inp-round">
+                    <datalist id="brand-list">
+                        <% for(let brand of locals.brands) { %>
+                            <option value="<%- brand.unnest %>"></option>
+                        <% } %>
+                    </datalist>  
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-pair col-md">
+                    <label for="theme-inp">Tematica:</label><br>
+                    <div id="theme-inp">
+                        <div class="radio-pair">
+                            <input type="radio" name="theme-radio" value="all" class="btn-check" id="radio-all" checked>
+                            <label for="radio-all" class="btn btn-outline-success">Toate</label>
+                        </div>
+                        <% for(let theme of locals.themes) { %>
+                            <div class="radio-pair">
+                                <input type="radio" name="theme-radio" value="<%- theme.unnest %>" id="<%- theme.unnest %>" class="btn-check">
+                                <label for="<%- theme.unnest %>" class="btn btn-outline-success"><%- theme.unnest %></label>
+                            </div>
+                        <% } %>
+                    </div>
+                </div> 
+                <div class="input-pair col-md">
+                    <label for="age-inp">Limita de varsta: </label>
+                    <select name="age-inp" id="age-inp" class="form-select">
+                        <option value="all" selected>Toate</option>
+                        <option value="6">6+</option>
+                        <option value="8">8+</option>
+                        <option value="10">10+</option>
+                        <option value="12">12+</option>
+                        <option value="14">14+</option>
+                        <option value="16">16+</option>
+                    </select>
+                </div>
             </div>
             <div class="input-pair">
                 <label for="player-inp">Numarul de jucatori:</label>
-                <select name="player-inp" id="player-inp" multiple size="3">
+                <select name="player-inp" id="player-inp" multiple size="3" class="form-select">
                     <option value="all" selected>Toate</option>
                     <option value="1-2">Solo & 1vs1</option>
                     <option value="2-5">1vs1 & Grup mediu (maxim 5)</option>
@@ -72,22 +85,23 @@
                     <option value="3-999">3 sau mai multi</option>
                 </select>
             </div>
-            <div class="input-pair">
+            <div class="input-pair ">
                 <label for="check-new">Noutati: </label>
                 <input type="checkbox" name="check-new" id="check-new">
             </div>
-            <button id="filterbtn">Aplica filtrele</button>
-            <button id="reset-btn">Reseteaza filtrele</button>
-            <button id="sort-asc">Sorteaza Ascendent</button>
-            <button id="sort-desc">Sorteaza Descendent</button>
-            <button id="calc-btn">Pret total</button>
+            
+            <button id="filterbtn" class="btn btn-primary btn-sm border"><i class="bi bi-funnel"></i> <span>Aplica filtrele</span></button>
+            <button id="reset-btn" class="btn btn-danger btn-sm border"><i class="bi bi-arrow-counterclockwise"></i> <span>Reseteaza filtrele</span></button>
+            <button id="sort-asc" class="btn btn-success btn-sm border"><i class="bi bi-sort-up"></i> <span>Sorteaza Ascendent</span></button>
+            <button id="sort-desc"class="btn btn-success btn-sm border"><i class="bi bi-sort-down-alt"></i> <span>Sorteaza Descendent</span></button>
+            <button id="calc-btn" class="btn btn-secondary btn-sm border"><i class="bi bi-cash"></i> <span>Pret total</span></button>
         </div>
         
         <section id="prods">
             <h2>Produsele noastre</h2>
             <div class="prods-grid">
                 <% for(let prod of locals.products) { %>
-                    <article class="product" id="artc-<%- prod.id %>">
+                    <article class="product container" id="artc-<%- prod.id %>">
                         <div>
                             <h3 class="nameval"><%- prod.nume %></h3>
                             <figure class="prodfig">

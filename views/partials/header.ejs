@@ -1,5 +1,5 @@
 <header>
-    <h1>BG Shop - Magazinul tau de board games <i class="bi bi-2-square"></i></i></h1>
+    <h1>BG Shop - Magazinul tau de board games </h1>
     <nav>
         <label for="drop-down">
             <div id="hamburger-menu">
@@ -21,14 +21,29 @@
             <li> <span>Produse <i class="fa-solid fa-chevron-down"></i></span>
                 <ul>
                     <li><a href="/produse">Toate</a></li>
-                    <!-- <% //for(let opt of options) { %>
-                        <li><a href="/produse?gen=<%- //opt.unnest %>"><%- //opt.unnest %></a></li>
-                    <% //} %> -->
+                    <li><a href="/produse?gen=strategie">Strategie</a></li>
+                    <li><a href="/produse?gen=petrecere">De petrecere</a></li>
+                    <li><a href="/produse?gen=figurina">Figurine</a></li>
+                    <li><a href="/produse?gen=carti">De carti</a></li>
+                    <li><a href="/produse?gen=rpg">RPG</a></li>
                 </ul>
             </li> 
             <li><a href=""><span>Contact</span></a></li> 
             <li><a href=""><span>Inregistrare</span></a></li> 
+            <div id="themediv" class="form-check form-switch d-flex">
+                <i class="bi bi-sun-fill"></i>
+                <div class="form-switch form-check ms-2">
+                    <input type="checkbox" id="themecheck" class="form-check-input" role="switch">
+                </div>
+                <label for="themecheck" class="form-check-label"><i class="bi bi-moon-stars-fill"></i></label>
+                
+                
+                
+                
+            </div>
         </ul>
-        <button id="theme-btn">Light/Dark Theme</button>
+        
+        
+        
     </nav>
 </header>

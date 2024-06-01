@@ -4,6 +4,7 @@ const path = require('path');
 const sharp = require('sharp');
 const sass = require('sass'); 
 const ejs = require('ejs');
+//const bootstrap = require("bootstrap");
 
 const app = express();
 
@@ -47,6 +48,9 @@ app.set("view engine", "ejs");
 
 app.use("/sources", express.static(path.join(__dirname, "sources")));
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
+app.use(
+    express.static(path.join(__dirname, "node_modules/bootstrap/dist/"))
+  );
 
 app.get(["/", "/index", "/home"], (req, res) => {
     res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images});

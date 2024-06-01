@@ -66,6 +66,7 @@
 .input-pair {
   display: block;
   margin-bottom: var(--txtpadding);
+  border-radius: 50%;
 }
 
 .radio-pair {
@@ -88,4 +89,34 @@
 .calcdiv p span {
   color: var(--highlightcolor);
   font-weight: bold;
+}
+
+.row {
+  margin-bottom: 1.5em;
+}
+
+.form-select {
+  width: 25%;
+  background-color: var(--txtcolor);
+  color: var(--bgcolor);
+}
+
+.form-control, #name-inp-label {
+  width: 50%;
+}
+
+.inp-round {
+  border-radius: 0.5em;
+  border: 1px solid transparent;
+}
+
+.form-range {
+  width: 50%;
+  height: 0.75em;
+}
+
+@media screen and (max-width: 820px) {
+  .prods-grid {
+    display: block;
+  }
 }

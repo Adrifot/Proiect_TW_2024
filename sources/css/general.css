@@ -214,6 +214,35 @@ ul li {
   display: none;
 }
 
+#themediv {
+  margin-left: auto;
+  color: var(--bgcolor);
+}
+
+#themecheck {
+  background-color: white;
+  border: none;
+  float: left;
+}
+
+#themecheck:checked {
+  background-color: #070C0D;
+}
+
+.bi-sun-fill {
+  margin-right: 0.25em;
+  font-size: 1.1em;
+}
+
+.bi-moon-stars-fill {
+  font-size: 0.9em;
+}
+
+@media screen and (max-width: 1280px) {
+  .btn *:not(i) {
+    display: none;
+  }
+}
 body.dark-theme {
   /* colors HEX*/
   --txtcolor: #FFEBFF;
@@ -231,4 +260,7 @@ body.dark-theme {
   --txtcolor_rgb: 255, 235, 255;
   --bgcolor_rgb: 7, 12, 13;
   --yellow_rgb: 101, 90, 124;
+}
+body.dark-theme #themediv {
+  color: white;
 }
