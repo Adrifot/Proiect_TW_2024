@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BG Shop - Inregistrare</title>
+    <%- include("../partials/head") %>
+</head>
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <div class="show">
+            <h1>Inregistrare</h1>
+            <% if(!locals.answer) { %>
+                <%- include("../partials/form", {action: "/register"}) %>
+            <% } %>
+            <% if(locals.answer) { %>
+                <% locals.answer + "<br/>" %>
+            <% } %>
+            <% if(locals.err) { %>
+                <%- locals.err %>
+            <% } %>
+        </div>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>
