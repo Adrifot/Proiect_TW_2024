@@ -7,4 +7,4 @@ sources/css/produs.css
 sources/css/produse.css
 views/pages/produs.ejs
 views/pages/produse.ejs
-modules/
+module_mele/
