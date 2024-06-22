@@ -1,37 +1,43 @@
-<form id="form_inreg"  method="post" class="date"  action="<%= locals.action %>"  enctype="multipart/form-data" >
+<form id="regform"  method="post" class="date"  action="<%= locals.action %>"  enctype="multipart/form-data" >
     <p>
         <label>
-            Username: <input type="text" name="username" id="inp-username" value="prof<%= Math.floor(Math.random()*100000) %>" required pattern="[A-Za-z0-9#_./]+">
+            Username: <input type="text" name="username" id="inp-username" value="user<%= Math.floor(Math.random()*100000) %>" required pattern="[A-Za-z0-9#_./]+">
         </label>
     </p>
     <p>
         <label>
-            Nume: <input type="text" name="surname" id="inp-nume"  value="Gogulescu" required >
+            Nume: <input type="text" name="surname" id="inp-nume"  value="Nume" required >
         </label>
     </p>
     <p>
         <label>
-            Prenume: <input type="text" name="name" id="inp-prenume" value="Gogu"  >
+            Prenume: <input type="text" name="name" id="inp-prenume" value="Prenume"  >
         </label>
     </p>
     <p>
         <label>
-            Parola: <input id="parl" type="password" required  name="pswd" value="">
+            Parola: <input id="pswd" type="password" required  name="pswd" value="">
         </label>
     </p>
     <p id="p-reintrod">
         <label >
-            Reintroduceti parola: <input id="rparl" required type="password" name="rpswd" value="">
+            Reintroduceti parola: <input id="rpswd" required type="password" name="rpswd" value="">
         </label>
     </p>
     <p>
         <label>
-            Email: <input type="text" name="email" id="inp-email" required value="profprofprof007@gmail.com"  size="50">
+            Email: <input type="text" name="email" id="inp-email" required value="mymail@gmail.com" size="50">
         </label>
     </p>
     <p>
         <label>
-            Culoare text chat: <select name="chatColor" id="sel-culoare"><option value="red" selected>rosu</option><option value="green">verde</option><option value="blue">albastru</option></select>
+            Culoare text chat: 
+            <select name="chatColor" id="sel-culoare">
+                <option value="black" selected>negru</option>
+                <option value="red">rosu</option>
+                <option value="green">verde</option>
+                <option value="blue">albastru</option>
+            </select>
         </label>
     </p>
     <p>

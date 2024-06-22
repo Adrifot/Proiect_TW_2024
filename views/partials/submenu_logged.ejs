@@ -1,0 +1,14 @@
+<% if(locals.user) { %>
+    <li class="usrn"><div><%- locals.user.username %></div>
+        <ul>
+            <li><a href="/profil">Profil</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </li>
+    <li> <span><%- locals.user.username %> <i class="fa-solid fa-chevron-down"></i></span>
+        <ul>
+            <li><a href="/profil">Profil</a></li>
+            <li><a href="/logout">Logout</a></li>
+        </ul>
+    </li> 
+<% } %>

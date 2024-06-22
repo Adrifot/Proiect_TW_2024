@@ -73,8 +73,9 @@ class User {
                 console.error("Database insertion error:", err);
             } else {
                 usr.sendEMail("V-ati inregistrat cu succes.", "Username-ul dvs. ete " + usr.username,
-                    `<h1>Salutari!</h1><p style='color:blue'>Username-ul dvs. este ${usr.username}.</p>
-                    <p><a href='http://${User.domainName}/cod/${usr.username}/${token}'>Click aici pentru confirmare.</a></p>`
+                    `<h1>Salutari!</h1><p style='color:black'>Username-ul dvs. este <b style='color: green'>${usr.username}.</b></p>
+                    <p><a href='http://${User.domainName}/cod/${usr.username}/${token}'>Click aici pentru confirmare.</a></p>
+                    <p><small style='color: gray'>Acesta este un email automatizat. Va rugam sa nu raspundeti la el.<small/></p>`
                 ).catch(e => {
                     console.error("Email sending error:", e);
                 });

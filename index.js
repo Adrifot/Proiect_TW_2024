@@ -15,12 +15,6 @@ const Client = require("pg").Client;
 
 const app = express();
 
-app.use(session({
-    secret: "abcdefg",
-    resave: true,
-    saveUninitialized: false
-}));
-
 var client = new Client({
     user: "adrian",
     database: "bgshop",
@@ -36,8 +30,30 @@ objGlobal = {
     objImg: null,
     sassFolder: path.join(__dirname, "sources/scss"),
     cssFolder: path.join(__dirname, "sources/css"),
-    backupFolder: path.join(__dirname, "backup")
+    backupFolder: path.join(__dirname, "backup"),
+    menuOptions: [],
+    protocol: "http://",
+    domainName: "localhost:8080"
 }
+
+client.query("select * from unnest(enum_range(null::genre))", (err, categRes) => {
+    if(err) console.log(err);
+    else objGlobal.menuOptions = categRes.rows;
+    //console.log(objGlobal.menuOptions);
+});
+
+app.use(session({
+    secret: "abcdefg",
+    resave: true,
+    saveUninitialized: false
+}));
+
+app.use("/*", function(req, res, next) {
+    res.locals.menuOptions = objGlobal.menuOptions;
+    res.locals.Rights = Rights;
+    if(req.session.user) req.user = res.locals.user = new User(req.session.user);
+    next();
+});
 
 folders = ["temp", "backup", "uploaded_photos"];
 for(let folder of folders) {
@@ -63,8 +79,8 @@ app.get(["/", "/index", "/home"], (req, res) => {
 app.get("/produse", (req, res) => {
     var conditionQuery = "";
     if(req.query.gen) conditionQuery = `where gen = '${req.query.gen}'`;
-    client.query("select * from unnest(enum_range(null::genre))", (err, genres) => {
-        if(err) console.log(err);
+    //client.query("select * from unnest(enum_range(null::genre))", (err, genres) => {
+        //if(err) console.log(err);
         client.query("select * from unnest(enum_range(null::theme))", (err2, themes) => {
             if(err2) console.log(err2);
             client.query("select * from unnest(enum_range(null::brand))", (err3, brands) => {
@@ -74,12 +90,12 @@ app.get("/produse", (req, res) => {
                         console.log(dberr);
                         throwError(dbres, 2);
                     } else {
-                        res.render("pages/products", {products: dbres.rows, genres: genres.rows, themes: themes.rows, brands: brands.rows});
+                        res.render("pages/products", {products: dbres.rows, themes: themes.rows, brands: brands.rows});
                     }
                 });
             });
         });
-    });
+    //});
 });
 
 app.get("/produs/:id", (req, res) => {
@@ -124,7 +140,7 @@ app.post("/register", (req, res) => {
             newUser.surname = txtFields.surname[0];
             newUser.pswd = txtFields.pswd[0];
             newUser.chatColor = txtFields.chatColor[0];
-            newUser.photo = photo[0];
+            newUser.photo = photo;
 
             User.getUserByUsername(txtFields.username[0], {}, function(u, param, usrerr) {
                 if(usrerr == -1) {
@@ -160,8 +176,51 @@ app.post("/register", (req, res) => {
     });
 });
 
+app.post("/login", (req, res) => {
+    let username;
+    let form = new formidable.IncomingForm();
 
+    form.parse(req, (err, txtFields, fileFields) => {
+        let callbackParams = {
+            req: req,
+            res: res,
+            pswd: txtFields.pswd[0]
+        };
 
+        User.getUserByUsername(txtFields.username[0], callbackParams, function(u, params, err) {
+            if (err) {
+                console.log("Error retrieving user:", err);
+                params.req.session.loginmsg = "Error retrieving user.";
+                params.res.redirect("/index");
+                return;
+            }
+            if (!u) {
+                console.log("User not found.");
+                params.req.session.loginmsg = "User not found.";
+                params.res.redirect("/index");
+                return;
+            }
+
+            let encryptedPswd = User.encryptPswd(params.pswd);
+            if (u.parola === encryptedPswd) {
+                u.photo = u.photo ? path.join("uploaded_photos", u.username, u.photo) : "";
+                params.req.session.user = u;
+                params.req.session.loginmsg = "You have been logged in!";
+                params.res.redirect("/index");
+            } else {
+                console.log("Incorrect password.");
+                params.req.session.loginmsg = "Incorrect password or email not confirmed!";
+                params.res.redirect("/index");
+            }
+        });
+    });
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy();
+    res.locals.user = null;
+    res.render("pages/logout");
+});
 
 app.get("/*", (req, res) => {
     try {

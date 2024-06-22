@@ -1,0 +1,9 @@
+<% if(locals?.user?.hasRight(Rights.viewUsers)) { %>
+    <li><div>Administrare</div>
+        <ul>
+            <li><a href="/users">Useri</a></li>
+            <li><a href="/graphs">Grafice</a></li>
+            <li><a href="/commands">Comenzi</a></li>
+        </ul>
+    </li>
+<% } %>

@@ -64,9 +64,9 @@
   top: 100%;
   left: 0;
   width: 100%;
-  z-index: 100;
   background-color: var(--complementcolor);
   transform-origin: left top;
+  z-index: 3;
 }
 .menu > li:hover ul li {
   padding: var(--txtpaddingsmall);
@@ -85,6 +85,10 @@
 }
 .menu > li:hover ul li:hover a::after {
   opacity: 1;
+}
+.menu > li a {
+  position: relative;
+  z-index: 999;
 }
 
 #home i:first-of-type {
@@ -115,19 +119,19 @@
 }
 @keyframes clip_menu {
   0% {
-    clip-path: polygon(0 0, 0 0, 0 50%, 0 100%, 0 100%);
+    clip-path: polygon(0 0, 0 0, 0 50%, 0 102%, 0 102%);
   }
   25% {
-    clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 100%, 0 100%);
+    clip-path: polygon(0 0, 25% 0, 33% 50%, 25% 102%, 0 102%);
   }
   50% {
-    clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 100%, 0 100%);
+    clip-path: polygon(0 0, 50% 0, 66% 50%, 50% 102%, 0 102%);
   }
   75% {
-    clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 100%, 0 100%);
+    clip-path: polygon(0 0, 75% 0, 100% 50%, 75% 102%, 0 102%);
   }
   100% {
-    clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 100% 0, 120% 50%, 100% 102%, 0 102%);
   }
 }
 @media screen and (max-width: 1280px) {
@@ -151,11 +155,19 @@
     padding: var(--txtpadding) 0;
     width: 100%;
     background-color: var(--complementcolor);
+    z-index: 1;
   }
   .menu > li ul {
     border-bottom: 2px solid var(--bgcolor);
   }
   .menu > li:hover {
+    clip-path: none !important;
+  }
+  .menu > li:hover ul {
+    position: asbolute;
+    z-index: 999;
+  }
+  .menu:hover li {
     clip-path: none !important;
   }
   #navhome {
@@ -167,21 +179,15 @@
   }
   #drop-down:checked + .menu {
     display: block;
-    z-index: 2;
     padding: 0;
   }
   .menu > li:hover ul {
     position: absolute;
     width: 100%;
-    z-index: 200;
     transform: scale(1, 1);
   }
   #drop-down:checked + .menu > li ul > * {
     position: relative;
-    z-index: 200;
-  }
-  .menu > li:hover > ul {
-    z-index: 200;
   }
   nav label {
     display: inline-block;
@@ -189,5 +195,14 @@
   .menu {
     position: absolute;
     width: 100%;
+  }
+  #themecheck {
+    display: none;
+  }
+  #hamburger-menu {
+    margin-left: 1em;
+  }
+  h1 {
+    margin-left: 0.25em;
   }
 }
