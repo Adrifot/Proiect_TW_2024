@@ -1,3 +1,5 @@
+// bdaccess.js
+
 const {Client, Pool} = require("pg");
 
 class BDAccess {
@@ -12,6 +14,7 @@ class BDAccess {
     initLocal() {
         this.client = new Client({
             database: "bgshop",
+            user: "adrian",
             password: "admin",
             host: "localhost",
             port: "5432"

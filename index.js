@@ -1,20 +1,25 @@
+// index.js
+
 const express = require("express");
 const fs = require('fs');
 const path = require('path');
 const sharp = require('sharp');
 const sass = require('sass'); 
 const ejs = require('ejs');
-//const bootstrap = require("bootstrap");
+const BDAccess = require("./modules/bdaccess.js");
+const formidable = require("formidable");
+const {User} = require("./modules/user.js")
+const session = require('express-session');
+const Rights = require("./modules/rights.js");
+const Client = require("pg").Client;
 
 const app = express();
 
-const AccesBD= require("./modules/accesbd.js");
-const formidable=require("formidable");
-const {Utilizator}=require("./modules/utilizator.js")
-const session=require('express-session');
-const Drepturi = require("./modules/drepturi.js");
-
-const Client = require("pg").Client;
+app.use(session({
+    secret: "abcdefg",
+    resave: true,
+    saveUninitialized: false
+}));
 
 var client = new Client({
     user: "adrian",
@@ -34,7 +39,7 @@ objGlobal = {
     backupFolder: path.join(__dirname, "backup")
 }
 
-folders = ["temp", "backup", "uploads"];
+folders = ["temp", "backup", "uploaded_photos"];
 for(let folder of folders) {
     let folderPath = path.join(__dirname, folder);
     if(!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
@@ -48,9 +53,8 @@ app.set("view engine", "ejs");
 
 app.use("/sources", express.static(path.join(__dirname, "sources")));
 app.use("/node_modules", express.static(path.join(__dirname, "node_modules")));
-app.use(
-    express.static(path.join(__dirname, "node_modules/bootstrap/dist/"))
-  );
+app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
+app.use("uploaded_photos", express.static(__dirname + "/uploaded_photos"));
 
 app.get(["/", "/index", "/home"], (req, res) => {
     res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images});
@@ -100,6 +104,64 @@ app.get(new RegExp("^\/[A-Za-z\/0-9]*\/$"), function(req, res){
 app.get("/favicon.ico", function(req, res){
     res.sendFile(path.join(__dirname,"sources/ico/favicon.ico"));
 });
+
+app.get("/register", (req, res) => {
+    res.render("pages/register");
+});
+
+app.post("/register", (req, res) => {
+    let username, photo;
+    let form = new formidable.IncomingForm();
+    form.parse(req, function(err, txtFields, fileFields) {
+        let myerr = "";
+
+        let newUser = new User();
+
+        try {
+            newUser.setName = txtFields.name[0];
+            newUser.setUsername = txtFields.username[0];
+            newUser.email = txtFields.email[0];
+            newUser.surname = txtFields.surname[0];
+            newUser.pswd = txtFields.pswd[0];
+            newUser.chatColor = txtFields.chatColor[0];
+            newUser.photo = photo[0];
+
+            User.getUserByUsername(txtFields.username[0], {}, function(u, param, usrerr) {
+                if(usrerr == -1) {
+                    newUser.saveUser();
+                    res.render("pages/register", {answer: "Inregistrare cu succes!"});
+                } else {
+                    myerr += "Username already exists.";
+                    res.render("pages/register", {err: "Eroare: " + myerr});
+                }
+            });
+        } catch(e) {
+            console.log(e);
+            myerr += "Website error";
+            res.render("pages/register", {err: "Eroare: " + myerr});
+        }
+    });
+
+    form.on("field", function(name, val) {  
+        if(name == "username")
+            username = val;
+    });
+
+    form.on("fileBegin", function(name, file) {
+        let folderUser = path.join(__dirname, "uploaded_photos", username);
+        if (!fs.existsSync(folderUser)) fs.mkdirSync(folderUser);
+        file.filepath = path.join(folderUser, file.originalFilename);
+        photo = file.originalFilename;
+    });
+
+    form.on("file", function(name, file) {
+        console.log("file");
+        console.log(name, file);
+    });
+});
+
+
+
 
 app.get("/*", (req, res) => {
     try {
@@ -200,98 +262,6 @@ function initImg() {
         image.filename = path.join("/", objGlobal.objImg.galleryPath, image.filename);
     }
 }
-
-
-//COD LABORATOR START
-app.use(session({ // aici se creeaza proprietatea session a requestului (pot folosi req.session)
-    secret: 'abcdefg',//folosit de express session pentru criptarea id-ului de sesiune
-    resave: true,
-    saveUninitialized: false
-  }));
-
-  app.post("/inregistrare",function(req, res){
-    var username;
-    var poza;
-    var formular= new formidable.IncomingForm()
-    formular.parse(req, function(err, campuriText, campuriFisier ){//4
-        console.log("Inregistrare:",campuriText);
-
-
-        console.log(campuriFisier);
-        console.log(poza, username);
-        var eroare="";
-
-
-        // TO DO var utilizNou = creare utilizator
-        var utilizNou = new Utilizator();
-        try{
-            utilizNou.setareNume=campuriText.nume;
-            utilizNou.setareUsername=campuriText.username;
-            utilizNou.email=campuriText.email
-            utilizNou.prenume=campuriText.prenume
-           
-            utilizNou.parola=campuriText.parola;
-            utilizNou.culoare_chat=campuriText.culoare_chat;
-            utilizNou.poza= poza;
-            Utilizator.getUtilizDupaUsername(campuriText.username, {}, function(u, parametru ,eroareUser ){
-                if (eroareUser==-1){//nu exista username-ul in BD
-                    //TO DO salveaza utilizator
-                    utilizNou.salvareUtilizator
-                }
-                else{
-                    eroare+="Mai exista username-ul";
-                }
-
-
-                if(!eroare){
-                    res.render("pagini/inregistrare", {raspuns:"Inregistrare cu succes!"})
-                   
-                }
-                else
-                    res.render("pagini/inregistrare", {err: "Eroare: "+eroare});
-            })
-           
-
-
-        }
-        catch(e){
-            console.log(e);
-            eroare+= "Eroare site; reveniti mai tarziu";
-            console.log(eroare);
-            res.render("pagini/inregistrare", {err: "Eroare: "+eroare})
-        }
-
-    });
-    formular.on("field", function(nume,val){  // 1
-   
-        console.log(`--- ${nume}=${val}`);
-       
-        if(nume=="username")
-            username=val;
-    })
-    formular.on("fileBegin", function(nume,fisier){ //2
-        console.log("fileBegin");
-       
-        console.log(nume,fisier);
-        //TO DO adaugam folderul poze_uploadate ca static si sa fie creat de aplicatie
-        
-        //TO DO in folderul poze_uploadate facem folder cu numele utilizatorului (variabila folderUser)
-        var folderUser;
-       
-        fisier.filepath=path.join(folderUser, fisier.originalFilename)
-        poza=fisier.originalFilename;
-        //fisier.filepath=folderUser+"/"+fisier.originalFilename
-        console.log("fileBegin:",poza)
-        console.log("fileBegin, fisier:",fisier)
-
-
-    })    
-    formular.on("file", function(nume,fisier){//3
-        console.log("file");
-        console.log(nume,fisier); 
-    });
-});
-//COD DE LABORATOR END
 
 initImg();
 initErr();
