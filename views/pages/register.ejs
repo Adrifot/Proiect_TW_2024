@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BG Shop - Inregistrare</title>
     <%- include("../partials/head") %>
+    <link rel="stylesheet" href="/sources/css/register.css">
 </head>
 <body>
     <%- include("../partials/header") %>
     <main>
         <div class="show">
-            <h1>Inregistrare</h1>
+            <h1 id="regtitle">Inregistrare</h1>
             <% if(!locals.answer) { %>
                 <%- include("../partials/form", {action: "/register"}) %>
             <% } %>
             <% if(locals.answer) { %>
-                <% locals.answer + "<br/>" %>
+                <%- locals.answer + "<br/>" %>
             <% } %>
             <% if(locals.err) { %>
                 <%- locals.err %>
