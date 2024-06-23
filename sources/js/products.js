@@ -1,7 +1,14 @@
-//const { name } = require("ejs");
-
 const newItemsPeriodDayLimit = 10;
 const specialChars = /[`!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?~ ]/;
+
+function replaceDiacritice(str) {
+    const diacritice = {
+        'ă': 'a', 'â': 'a', 'î': 'i', 'ș': 's', 'ț': 't',
+        'Ă': 'A', 'Â': 'A', 'Î': 'I', 'Ș': 'S', 'Ț': 'T'
+    };
+    
+    return str.replace(/[ăâîșțĂÂÎȘȚ]/g, match => diacritice[match]);
+}
 
 window.addEventListener("load", () => {
     const filterBtn = document.getElementById("filterbtn");
@@ -29,18 +36,19 @@ window.addEventListener("load", () => {
     }
 
     filterBtn.onclick = function() {
-        let nameInputVal = nameInput.value.toLowerCase().trim();
-        let keywordInputVal = document.getElementById("keywords-inp").value.toLowerCase().trim();
+        let shownprods = 0;
+        let nameInputVal = replaceDiacritice(nameInput.value.toLowerCase().trim());
+        let keywordInputVal = replaceDiacritice(document.getElementById("keywords-inp").value.toLowerCase().trim());
         let inpPriceVal = parseInt(priceRange.value);
-        let inpBrandVal = document.getElementById("brand-inp").value.toLowerCase().trim();
+        let inpBrandVal = replaceDiacritice(document.getElementById("brand-inp").value.toLowerCase().trim());
         let ageInputVal = document.getElementById("age-inp").value;
-
+    
         let playerInputVal = document.getElementById("player-inp");
         let selectedValsMin = [];
         let selectedValsMax = [];
         let selectAll = false;
-        for(let option of playerInputVal.selectedOptions) {
-            if(option.value == "all") {
+        for (let option of playerInputVal.selectedOptions) {
+            if (option.value == "all") {
                 selectAll = true;
                 break;
             }
@@ -49,26 +57,26 @@ window.addEventListener("load", () => {
         }
         let minPlayersNr = Math.min(...selectedValsMin);
         let maxPlayersNr = Math.max(...selectedValsMax);
-
+    
         let themeRadios = document.getElementsByName("theme-radio");
         let inpRadio;
-        for(let radio of themeRadios) {
-            if(radio.checked) {
+        for (let radio of themeRadios) {
+            if (radio.checked) {
                 inpRadio = radio.value;
                 break;
             }
         }
-
+    
         let checkNewInp = document.getElementById("check-new").checked;
         let monthsRO = {
             "ianuarie": 1, "februarie": 2, "martie": 3, "aprilie": 4,
-            "mai": 5, "iunie": 6, "iulie": 7, "august": 8, 
+            "mai": 5, "iunie": 6, "iulie": 7, "august": 8,
             "septembrie": 9, "octombrie": 10, "noiembrie": 11, "decembrie": 12
         }
-
+    
         let currDate = new Date();
-
-        for(let product of products) {
+    
+        for (let product of products) {
             let nameVal = product.getElementsByClassName("nameval")[0].innerHTML.toLowerCase().trim();
             let keywords = product.getElementsByClassName("keywords")[0].innerHTML.toLowerCase().trim();
             let priceVal = parseFloat(product.getElementsByClassName("price")[0].innerHTML);
@@ -82,21 +90,38 @@ window.addEventListener("load", () => {
             let day = parseInt(romanianDateParts[0]);
             let month = monthsRO[romanianDateParts[1]];
             let year = parseInt(romanianDateParts[2]);
-            let isodate = new Date(year, month-1, day);
-
-            let cond1 = nameVal.startsWith(nameInputVal); 
+            let isodate = new Date(year, month - 1, day);
+    
+            let cond1 = nameVal.startsWith(nameInputVal);
             let cond2 = keywords.includes(keywordInputVal);
             let cond3 = priceVal <= inpPriceVal;
             let cond4 = inpBrandVal ? (brandVal == inpBrandVal) : true;
-            let cond5 = (inpRadio == "all")? true : (inpRadio == themeVal);
-            let cond6 = (ageInputVal == "all")? true : (parseInt(ageInputVal) <= ageVal);
-            let cond7 = selectAll || ((playerMinVal >= minPlayersNr) && (playerMaxVal <=  maxPlayersNr));
-            let cond8 = (!checkNewInp ? true : (Math.abs(currDate - isodate) / (1000*60*60*24)) <= newItemsPeriodDayLimit); 
+            let cond5 = (inpRadio == "all") ? true : (inpRadio == themeVal);
+            let cond6 = (ageInputVal == "all") ? true : (parseInt(ageInputVal) <= ageVal);
+            let cond7 = selectAll || ((playerMinVal >= minPlayersNr) && (playerMaxVal <= maxPlayersNr));
+            let cond8 = (!checkNewInp ? true : (Math.abs(currDate - isodate) / (1000 * 60 * 60 * 24)) <= newItemsPeriodDayLimit);
             let conditions = [cond1, cond2, cond3, cond4, cond5, cond6, cond7, cond8];
-            if(conditions.every(condition => condition)) product.style.display = "grid";
-            else product.style.display = "none";
+            if (conditions.every(condition => condition)) {
+                product.style.display = "grid";
+                shownprods++;
+            } else {
+                product.style.display = "none";
+            }
         }
-    }//filter button
+    
+        const warnp = document.createElement("p");
+        warnp.id = "warnp";
+        const prodh2 = document.getElementById("prodh2");
+        if (shownprods == 0) {
+            warnp.innerHTML = "Nu exista niciun produs care satisface filtrele alese.";
+            prodh2.insertAdjacentElement('afterend', warnp);
+        } else {
+            const existingWarnp = document.getElementById("warnp");
+            if (existingWarnp) {
+                existingWarnp.remove();
+            }
+        }
+    };
 
 
     const sortBtnAsc = document.getElementById("sort-asc");
@@ -125,7 +150,7 @@ window.addEventListener("load", () => {
 
 
     resetBtn.onclick = function() {
-        if(confirm("Sunteti siguri ca vreti sa resetati toate filtrele?")) {
+        if (confirm("Sunteti siguri ca vreti sa resetati toate filtrele?")) {
             document.getElementById("name-inp").value = "";
             document.getElementById("keywords-inp").value = "";
             priceRange.value = priceRange.max;
@@ -135,12 +160,14 @@ window.addEventListener("load", () => {
             document.getElementById("player-inp").selectedIndex = 0;
             document.getElementsByName("theme-radio")[0].checked = true;
             document.getElementById("check-new").checked = false;
-            for(let product of initialProducts) {
+            for (let product of initialProducts) {
                 product.parentNode.appendChild(product);
                 product.style.display = "grid";
-            } 
+            }
+            const warnp = document.getElementById("warnp");
+            if (warnp) warnp.remove();
         } else return;
-    }
+    };
     
     calcBtn.onclick = function() {
         let totalPrice = 0;

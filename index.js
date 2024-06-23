@@ -287,7 +287,13 @@ function compileSass(sassPath, cssPath) {
     if(!fs.existsSync(backupPath)) fs.mkdirSync(backupPath, {recursive: true});
 
     let cssFolderName = path.basename(cssPath);
-    if(fs.existsSync(cssPath)) fs.copyFileSync(cssPath, path.join(objGlobal.backupFolder, "sources/css", cssFolderName));
+
+    if(fs.existsSync(cssPath)) {
+        let timestamp = new Date().toISOString().replace(/[:.T]/g, "-");
+        let backupFile = `${path.basename(cssPath, ".css")}-${timestamp}.css`;
+        fs.copyFileSync(cssPath, path.join(objGlobal.backupFolder, "sources/css", backupFile));
+       // fs.copyFileSync(cssPath, path.join(objGlobal.backupFolder, "sources/css", cssFolderName));
+    }
     resultFolder = sass.compile(sassPath, {"sourceMap": true});
     fs.writeFileSync(cssPath, resultFolder.css);
 }
