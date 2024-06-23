@@ -33,13 +33,27 @@
                 </div>
             </section>
             <section id="dayprod">
-                <h3>Produsul Zilei</h3>
-                <p>
+                <h3>Produsele noastre</h3>
+                <!-- <p>
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa soluta perspiciatis quas vitae provident. Tempore officia repudiandae labore, illum rem culpa est quibusdam commodi hic dicta optio pariatur sint ad!
-                </p>
+                </p> -->
+                <% for(let prod of locals.prods) { %>
+                    <div class="prodcard">
+                        <img src="sources/images/products/<%- prod.imagine %>" class="prodcard-img" alt="imagine <%- prod.nume %>">
+                        <div class="prodcard-body">
+                            <h5 class="prodcard-title"><%- prod.nume %></h5>
+                            <p class="prodcard-text">
+                                Gen: <span class="genre"><%- prod.gen %></span> |
+                                Tematica: <span class="theme"><%- prod.tematica %></span> |
+                                Varsta: <span class="age"><%- prod.varsta %></span>+
+                            </p>
+                            <a href="/produs/<%- prod.id %>" class="btn btn-primary">Vezi produsul</a>
+                        </div>
+                    </div>
+                <% } %>
             </section>
             <section id="newprods">
-                <h3>Produse Noi</h3>
+                <h3>Informatii utile</h3>
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Quia, amet officiis velit quos quae neque iste itaque esse iure ipsum excepturi deserunt perspiciatis impedit dicta iusto! Temporibus dolore ea pariatur.
                     Quia ex quod voluptas architecto ipsam quaerat ut omnis, ea illo et beatae fugit cum est aut deserunt error commodi perspiciatis in nisi provident tempora a facilis sit quas! Deleniti!
@@ -216,5 +230,6 @@
         <div id="watermark"><p>Fota<br>Adrian</p></div>
     </main>
     <%- include("../partials/footer.ejs") %>
+    <script src="/sources/js/prodcards.js"></script>
 </body>
 </html>

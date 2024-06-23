@@ -214,6 +214,16 @@ video {
     display: none;
   }
 }
+.prodcard {
+  transition: all 1s ease-in-out;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+.prodcard img {
+  width: 75%;
+}
+
 @media screen and (max-width: 1280px) {
   #gallery-grid {
     display: grid;
@@ -291,6 +301,11 @@ video {
   }
   #whoa-div {
     display: none;
+  }
+  .prodcard img {
+    width: 50%;
+    max-width: 250px !important;
+    min-width: 100px !important;
   }
 }
 @media screen and (max-width: 820px) {

@@ -207,6 +207,15 @@ video {
     }
 }
 
+.prodcard {
+    transition: all 1s ease-in-out;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+.prodcard img {
+    width: 75%;
+}
+
 $rows: 5;
 $cols: 2;
 
@@ -229,6 +238,11 @@ $cols: 2;
     }
     #whoa-div {
         display: none;
+    }
+    .prodcard img {
+        width: 50%;
+        max-width: 250px !important;
+        min-width: 100px !important;
     }
 }
 

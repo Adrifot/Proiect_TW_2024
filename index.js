@@ -73,7 +73,10 @@ app.use(express.static(path.join(__dirname, "node_modules/bootstrap/dist/")));
 app.use("uploaded_photos", express.static(__dirname + "/uploaded_photos"));
 
 app.get(["/", "/index", "/home"], (req, res) => {
-    res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images});
+    client.query("select * from produse", (err, prods) => {
+        if(err) console.log(err);
+        else res.render("pages/index", {ip: req.ip, images: objGlobal.objImg.images, prods: prods.rows});
+    });
 });
 
 app.get("/produse", (req, res) => {

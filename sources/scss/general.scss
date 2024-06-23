@@ -252,6 +252,45 @@ ul {
     font-size: 0.9em;
 }
 
+#cookiebanner {
+    position: fixed;
+    bottom: 0;
+    left: -100%;
+    width: 100%;
+    padding: $padding-med;
+    text-align: center;
+    background-color: $yellow;
+    border: 2px solid $bgcolor;
+    color: $white;
+    font-size: 1em;
+    transition: all 5s ease-in-out;
+    animation: cookiebanner_animation 5s forwards;
+    display: none;
+}
+
+#okcookie {
+    margin-left: 1.5em;
+}
+
+@keyframes cookiebanner_animation {
+    0% {
+        left: -100%;
+        background-color: $yellow;
+        border-color: $bgcolor;
+    }
+    50% {
+        left: 50%;
+        background-color: $bgcolor;
+        border-color: $lightgreen;
+        transform: translateX(-50%);
+    }
+    100% {
+        left: 0;
+        background-color: $lightgreen;
+        vorder-color: $bgcolor;
+    }
+}
+
 @media screen and (max-width: 1280px) {
     .btn *:not(i) {
         display: none;
